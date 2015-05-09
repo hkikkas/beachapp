@@ -33,7 +33,7 @@ var app = {
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
  
-		var map = new google.maps.Map(document.getElementById(this.mapContainerId), mapOptions);
+		var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 	
 		var marker = new google.maps.Marker({
 			  position: latLong,
