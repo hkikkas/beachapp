@@ -50,6 +50,7 @@ var app = {
 
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
 
+		//TODO: Currently the location marker is shown north of the actual location, e.g. myLatLong is bottom center of the marker
 		var marker = new google.maps.Marker({
 				position: myLatLong,
 				map: app.mapObject,
@@ -95,7 +96,8 @@ var app = {
 			disableDefaultUI: true
 		}
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
-			
+		
+		//TODO: Currently the location marker is shown north of the actual location, e.g. myLatLong is bottom center of the marker	
 		var marker = new google.maps.Marker({
 			position: myLatlng,
 			map: app.mapObject,
