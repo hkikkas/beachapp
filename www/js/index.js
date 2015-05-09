@@ -6,6 +6,9 @@ var app = {
 	// Application Constructor
 	initialize: function() {
 		this.bindEvents();
+		
+		// hide the splash screen
+		$('#splash_screen').fadeOut(2500);
 	},
 	
 	// Bind Event Listeners
