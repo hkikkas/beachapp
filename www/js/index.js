@@ -1,7 +1,13 @@
 var app = {
 	
+	apiURL: "http://beachspot.org/test/",
+	
 	mapContainerName: "map",
 	mapObject: "",
+	mapBounds: new google.maps.LatLngBounds(),
+	
+	markersArray: [],
+	markerImage: 'img/map/marker2.png',
 	
 	// Application Constructor
 	initialize: function() {
@@ -32,41 +38,70 @@ var app = {
 
 		var longitude = position.coords.longitude;
 		var latitude = position.coords.latitude;
-		var latLong = new google.maps.LatLng(latitude, longitude);
+		var myLatLong = new google.maps.LatLng(latitude, longitude);
  
 		var mapOptions = {
-			center: latLong,
+			center: myLatLong,
 			zoom: 13,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
- 
+
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
-		var markerImage = 'img/map/marker2.png';
-	
-		var marker = new google.maps.Marker({
-			position: latLong,
-			map: app.mapObject,
-			icon: markerImage,
-			title: 'Nice little beach'
-		});
+		
+		// add listener for bounds changed event
+		google.maps.event.addListener(app.mapObject, 'bounds_changed', function() {
+			app.bounds = app.mapObject.getBounds();
+			
+			var northEast = app.bounds.getNorthEast();
+			var southWest = app.bounds.getSouthWest();
+			
+			// construct the api call parameters
+			var apiCallParams = app.apiURL + '?lat1=' + northEast.lat() + '&lon1=' + northEast.lng();
+			apiCallParams += '&lat2=' + southWest.lat() + '&lon2=' + southWest.lng();
+			
+			$.ajax({
+				url: apiCallParams,
+				dataType: 'jsonp',
+				jsonp: 'callback',
+				jsonpCallback: 'app.jsonpCallback',
+			});
+			
+		}); // end of listener callbck
 
 	},
 	
 	fakeTheMap : function() {
-		var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+		
+		// hide the splash
+		$('#splash_screen').hide();
+		
+		var myLatlng = new google.maps.LatLng(59.4425, 24.634);
 		var mapOptions = {
 			zoom: 12,
 			center: myLatlng
 		}
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
-		var markerImage = 'img/map/marker2.png';
 		
-		var marker = new google.maps.Marker({
-			position: myLatlng,
-			map: app.mapObject,
-			icon: markerImage,
-			title: 'Hello World!'
-		});
+		
+		// add listener for bounds changed event
+		google.maps.event.addListener(app.mapObject, 'bounds_changed', function() {
+			app.bounds = app.mapObject.getBounds();
+			
+			var northEast = app.bounds.getNorthEast();
+			var southWest = app.bounds.getSouthWest();
+			
+			// construct the api call parameters
+			var apiCallParams = app.apiURL + '?lat1=' + northEast.lat() + '&lon1=' + northEast.lng();
+			apiCallParams += '&lat2=' + southWest.lat() + '&lon2=' + southWest.lng();
+			
+			$.ajax({
+				url: apiCallParams,
+				dataType: 'jsonp',
+				jsonp: 'callback',
+				jsonpCallback: 'app.jsonpCallback',
+			});
+			
+		}); // end of listener callbck
 	},
 	
 	onError: function(error){
@@ -75,6 +110,35 @@ var app = {
 	
 	toggleMap: function() {
 		$('#' + app.mapContainerName).toggle();
+	},
+	
+	clearMarkers: function() {
+		for (var i = 0; i < app.markersArray.length; i++ ) {
+			app.markersArray[i].setMap(null);
+		}
+		app.markersArray.length = 0;
+	},
+	
+	jsonpCallback: function( data ) {
+
+		// clear old markers
+		app.clearMarkers();
+	
+		$.each(data, function(i, item) {
+			var markerLatlng = new google.maps.LatLng(data[i].bLat, data[i].bLon);
+			
+			var marker = new google.maps.Marker({
+				position: markerLatlng,
+				map: app.mapObject,
+				icon: app.markerImage,
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				title: data[i].bInfo.bwname
+			});
+			
+			// push markers to global array
+			app.markersArray.push(marker);
+
+		});
 	}
 };
  
