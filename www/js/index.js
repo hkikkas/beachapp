@@ -43,7 +43,8 @@ var app = {
 		var mapOptions = {
 			center: myLatLong,
 			zoom: 13,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			disableDefaultUI: true
 		};
 
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
@@ -78,7 +79,8 @@ var app = {
 		var myLatlng = new google.maps.LatLng(59.4425, 24.634);
 		var mapOptions = {
 			zoom: 10,
-			center: myLatlng
+			center: myLatlng,
+			disableDefaultUI: true
 		}
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
 		
