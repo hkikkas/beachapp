@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "org.beachspot.app"
-        version   = "1.0.12">
+        version   = "1.0.13">
 
     <name>Beachspot</name>
 
@@ -87,8 +87,8 @@
     <icon src="www/res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
     <icon src="www/res/icon/ios/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
     <icon src="www/res/icon/webos/icon-64.png"          gap:platform="webos" />
-    <icon src="www/res/icon/windows-phone/logo_48.png"  gap:platform="winphone" />
-    <icon src="www/res/icon/windows-phone/logo_173.png" gap:platform="winphone"   gap:role="background" />
+    <icon src="res/icon/windows-phone/logo_48.png"  gap:platform="winphone" />
+    <icon src="res/icon/windows-phone/logo_173.png" gap:platform="winphone"   gap:role="background" />
 
     <!-- Define app splash screen for each platform. -->
     <gap:splash src="www/res/screen/android/screen-ldpi-portrait.png"       gap:platform="android" gap:qualifier="port-ldpi" />

@@ -41,7 +41,7 @@ html, body {
 #search_input {
 	display: block;
 	margin : 0 auto;
-	background: url('../img/ico_search_70.png') no-repeat scroll 3px 3px;
+	background: url('../img/ico_search_70.png') no-repeat scroll 6px 6px;
 	background-color: white;
 	background-size: 17px 17px;
 	font-family: "Sans Serif", Verdana, Arial;
