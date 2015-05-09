@@ -77,7 +77,7 @@ var app = {
 		
 		var myLatlng = new google.maps.LatLng(59.4425, 24.634);
 		var mapOptions = {
-			zoom: 12,
+			zoom: 10,
 			center: myLatlng
 		}
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
