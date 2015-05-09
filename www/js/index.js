@@ -142,5 +142,5 @@ var app = {
 	}
 };
  
-//google.maps.event.addDomListener(window, 'load', app.fakeTheMap());
-app.initialize();
+google.maps.event.addDomListener(window, 'load', app.fakeTheMap());
+//app.initialize();

@@ -26,10 +26,29 @@ html, body {
 }
 
 
-#map{
+#map {
     width: 100%;
-    height: 80%;
+    height: 90%;
 	background-color: Gray;
+}
+
+#search_container {
+	width: 100%;
+	height: 10%;
+	background-color: #5d9cec;
+}
+
+#search_input {
+	display: block;
+	margin : 0 auto;
+	background: url('../img/ico_search_70.png') no-repeat scroll 17px 17px;
+	background-color: White;
+	font-family: "Sans Serif", Verdana, Arial;
+	font-size: 17px;
+	padding-left: 34px;
+	height: 50%;
+	width: 80%;
+	border: 0px;
 }
 
 body {
