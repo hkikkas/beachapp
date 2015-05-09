@@ -75,7 +75,7 @@
     -->
 
     <!-- Define app icon for each platform. -->
-    <icon src="icon.png" />
+    <icon src="beachspot_icon.png" />
     <icon src="www/res/icon/android/logo_36.png"   gap:platform="android"    gap:qualifier="ldpi" />
     <icon src="www/res/icon/android/logo_48.png"   gap:platform="android"    gap:qualifier="mdpi" />
     <icon src="www/res/icon/android/logo_72.png"   gap:platform="android"    gap:qualifier="hdpi" />
