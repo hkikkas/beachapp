@@ -8,6 +8,7 @@ var app = {
 	
 	markersArray: [],
 	markerImage: 'img/map/marker2.png',
+	mylocationImage: 'img/map/mylocation.png',
 	
 	// Application Constructor
 	initialize: function() {
@@ -42,11 +43,22 @@ var app = {
  
 		var mapOptions = {
 			center: myLatLong,
-			zoom: 13,
+			zoom: 11,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
+
+		var marker = new google.maps.Marker({
+				position: myLatLong,
+				map: app.mapObject,
+				icon: app.mylocationImage,
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				title: "Your location"
+			});
+			
+		// push markers to global array
+		app.markersArray.push(marker);
 		
 		// add listener for bounds changed event
 		google.maps.event.addListener(app.mapObject, 'bounds_changed', function() {
@@ -81,7 +93,17 @@ var app = {
 			center: myLatlng
 		}
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
-		
+			
+		var marker = new google.maps.Marker({
+			position: myLatlng,
+			map: app.mapObject,
+			icon: app.mylocationImage,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			title: "Your location"
+		});
+			
+		// push markers to global array
+		app.markersArray.push(marker);
 		
 		// add listener for bounds changed event
 		google.maps.event.addListener(app.mapObject, 'bounds_changed', function() {
@@ -113,10 +135,10 @@ var app = {
 	},
 	
 	clearMarkers: function() {
-		for (var i = 0; i < app.markersArray.length; i++ ) {
+		for (var i = 1; i < app.markersArray.length; i++ ) {
 			app.markersArray[i].setMap(null);
 		}
-		app.markersArray.length = 0;
+		app.markersArray.length = 1;
 	},
 	
 	jsonpCallback: function( data ) {
