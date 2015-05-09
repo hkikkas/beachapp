@@ -1,5 +1,7 @@
 var app = {
 	
+	mapContainerName: "map",
+	
 	// Application Constructor
 	initialize: function() {
 		this.bindEvents();
@@ -32,11 +34,13 @@ var app = {
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
  
-		var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+		var map = new google.maps.Map(document.getElementById(this.mapContainerName), mapOptions);
+		var markerImage = 'img/map/marker2.png';
 	
 		var marker = new google.maps.Marker({
 			position: latLong,
 			map: map,
+			icon: markerImage,
 			title: 'my location'
 		});
 
@@ -48,11 +52,13 @@ var app = {
 			zoom: 12,
 			center: myLatlng
 		}
-		var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+		var map = new google.maps.Map(document.getElementById(this.mapContainerName), mapOptions);
+		var markerImage = 'img/map/marker2.png';
+		
 		var marker = new google.maps.Marker({
 			position: myLatlng,
 			map: map,
+			icon: markerImage,
 			title: 'Hello World!'
 		});
 	},
@@ -62,9 +68,9 @@ var app = {
 	},
 	
 	toggleMap: function() {
-		$('#map').toggle();
+		$('#' + this.mapContainerName).toggle();
 	}
 };
  
-//google.maps.event.addDomListener(window, 'load', app.fakeTheMap());
-app.initialize();
+google.maps.event.addDomListener(window, 'load', app.fakeTheMap());
+//app.initialize();
