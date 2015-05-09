@@ -11,10 +11,14 @@
 	</head>
 	<body>
 	
+		<div id="button_container">
+			<button id="slide_enable" onClick="javascript: app.toggleMap();">Toggle map</button>
+		</div>
 		<div id="map"></div>
 
 		<!-- JS loading at the end of the page -->
 		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/assets/jquery.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 	</body>

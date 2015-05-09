@@ -1,7 +1,5 @@
 var app = {
 	
-	mapContainerId: 'map',
-	
 	// Application Constructor
 	initialize: function() {
 		this.bindEvents();
@@ -22,7 +20,8 @@ var app = {
 	   navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
 	},
  
-	onSuccess: function(position){
+	onSuccess: function(position) {
+
 		var longitude = position.coords.longitude;
 		var latitude = position.coords.latitude;
 		var latLong = new google.maps.LatLng(latitude, longitude);
@@ -36,10 +35,11 @@ var app = {
 		var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 	
 		var marker = new google.maps.Marker({
-			  position: latLong,
-			  map: map,
-			  title: 'my location'
-		  });
+			position: latLong,
+			map: map,
+			title: 'my location'
+		});
+
 	},
 	
 	fakeTheMap : function() {
@@ -48,7 +48,7 @@ var app = {
 			zoom: 12,
 			center: myLatlng
 		}
-		var map = new google.maps.Map(document.getElementById(this.mapContainerId), mapOptions);
+		var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 		var marker = new google.maps.Marker({
 			position: myLatlng,
@@ -60,6 +60,10 @@ var app = {
 	onError: function(error){
 		alert("the code is " + error.code + ". \n" + "message: " + error.message);
 	},
+	
+	toggleMap: function() {
+		$('#map').toggle();
+	}
 };
  
 //google.maps.event.addDomListener(window, 'load', app.fakeTheMap());
