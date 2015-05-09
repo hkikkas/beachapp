@@ -1,11 +1,13 @@
 var app = {
 	
 	mapContainerName: "map",
+	mapObject: "",
 	
 	// Application Constructor
 	initialize: function() {
 		this.bindEvents();
 	},
+	
 	// Bind Event Listeners
 	//
 	// Bind any events that are required on startup. Common events are:
@@ -13,6 +15,7 @@ var app = {
 	bindEvents: function() {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
 	},
+	
 	// deviceready Event Handler
 	//
 	// The scope of 'this' is the event. In order to call the 'receivedEvent'
@@ -34,14 +37,14 @@ var app = {
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
  
-		var map = new google.maps.Map(document.getElementById(this.mapContainerName), mapOptions);
+		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
 		var markerImage = 'img/map/marker2.png';
 	
 		var marker = new google.maps.Marker({
 			position: latLong,
-			map: map,
+			map: app.mapObject,
 			icon: markerImage,
-			title: 'my location'
+			title: 'Nice little beach'
 		});
 
 	},
@@ -52,12 +55,12 @@ var app = {
 			zoom: 12,
 			center: myLatlng
 		}
-		var map = new google.maps.Map(document.getElementById(this.mapContainerName), mapOptions);
+		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
 		var markerImage = 'img/map/marker2.png';
 		
 		var marker = new google.maps.Marker({
 			position: myLatlng,
-			map: map,
+			map: app.mapObject,
 			icon: markerImage,
 			title: 'Hello World!'
 		});
@@ -68,7 +71,7 @@ var app = {
 	},
 	
 	toggleMap: function() {
-		$('#' + this.mapContainerName).toggle();
+		$('#' + app.mapContainerName).toggle();
 	}
 };
  
