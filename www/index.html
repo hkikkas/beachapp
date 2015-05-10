@@ -23,23 +23,25 @@
 		<!-- Search containers -->
 		<div id="search_container">
 			<br />
-			<input type="text" id="search_input" placeholder="Search" onchange="$('#result_container').show(); $('#search_container').css('background-color','white');">
+			<input type="text" id="search_input" placeholder="Search" onchange="app.searchBeach(); $('#search_container').css('background-color','white');">
 		</div>
 
 		<div id="result_container"></div>
 		
 		<div id="result_tmpl">
-			<span class="result first" onclick="app.showDetails();">
-				<span class="name_of_beach">%BEACH_NAME%</span>
-				<span class="distance_to_beach">17 km</span>
-			</span>
+			<div id="beach_%BEACH_ID%">
+				<span class="result first">
+					<span class="name_of_beach">%BEACH_NAME%</span>
+					<span class="distance_to_beach">%BEACH_COUNTRY%</span>
+				</span>
+			</div>
 		</div>
 		<!-- Search containers -->
 		
 		<!-- Beach details container template -->
 		<div id="details_container_tmpl">
 			<div style="text-align: right;">
-				<button onclick="$('#details_container').hide();$('#map').show();$('#details_button').show();" style="margin: 10px 20px 0px 20px; border: none; background-color: white;">❌</button>
+				<button onclick="$('#details_container').hide(); $('#map').show();" style="margin: 10px 20px 0px 20px; border: none; background-color: white;">❌</button>
 			</div>
 			
 			<div class="details_head">
