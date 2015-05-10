@@ -211,26 +211,38 @@ var app = {
 		$('#' + app.resultContainerName).hide();
 		$('#' + app.resultContainerName).empty();
 		
-		if(data.length > 0) // hide the map
+		if(data.length > 0) {
 			$('#' + app.mapContainerName).hide();
 
-		// append search results
-		var newHTML = '';
-		$.each(data, function(i, item) {
+			// append search results
+			var newHTML = '';
+			$.each(data, function(i, item) {
+				var tmplHTML = $('#' + app.resultContainerTmpl).html();
+				tmplHTML = tmplHTML.replace('%BEACH_ID%', item.bID);
+				tmplHTML = tmplHTML.replace('%BEACH_NAME%', item.bInfo.bwname);
+				tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', item.bInfo.bwco);
+				
+				$('#' + app.resultContainerName).append(tmplHTML);
+				
+				// add click event to div based on beach id
+				$('#beach_' + item.bID).click( function() {
+					$('#' + app.resultContainerName).hide();
+					app.showBeachDetails(item);
+				});
+			});
+		} // if no results
+		else {
+			$('#' + app.mapContainerName).hide();
+			
 			var tmplHTML = $('#' + app.resultContainerTmpl).html();
-			tmplHTML = tmplHTML.replace('%BEACH_ID%', item.bID);
-			tmplHTML = tmplHTML.replace('%BEACH_NAME%', item.bInfo.bwname);
-			tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', item.bInfo.bwco);
+			tmplHTML = tmplHTML.replace('%BEACH_ID%', 'nothing');
+			tmplHTML = tmplHTML.replace('%BEACH_NAME%', 'No results could be found');
+			tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', '');
 			
 			$('#' + app.resultContainerName).append(tmplHTML);
 			
-			// add click event to div based on beach id
-			$('#beach_' + item.bID).click( function() {
-				$('#' + app.resultContainerName).hide();
-				app.showBeachDetails(item);
-			});
-		});
-
+		} // else -> show no results message
+		
 		// show the container
 		$('#' + app.resultContainerName).show();
 	},
