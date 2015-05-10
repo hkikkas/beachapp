@@ -196,10 +196,13 @@ var app = {
 		
 		var beachName = $('#' + app.searchInput).val();
 		
-		if(beachName.length < 3)
-			return;
-		else // design changes
+		if(beachName.length < 3) {
+			$('#' + app.searchInput).css('border', '2px solid red');
+			return;}
+		else { // design changes
+			$('#' + app.searchInput).css('border', 'none');
 			$('#' + app.searchContainer).css('background-color', 'White');
+			}
 
 		// construct the api call parameters
 		var apiCallParams = app.apiURL + '?s=' + beachName;
