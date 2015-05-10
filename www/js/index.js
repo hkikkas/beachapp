@@ -208,6 +208,9 @@ var app = {
 		// clear old results
 		$('#' + app.resultContainerName).hide();
 		$('#' + app.resultContainerName).empty();
+		
+		if(data.length > 0) // hide the map
+			$('#' + app.mapContainerName).hide();
 
 		// append search results
 		var newHTML = '';
