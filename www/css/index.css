@@ -239,6 +239,24 @@ ul#details_rating li {
   display: inline;
 }
 
+#details_photos_top {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  clear: both;
+  position: relative;
+  display: inline;
+}
+
+#details_photos_bottom {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  clear: both;
+  position: relative;
+  display: inline;
+}
+
 #details_pictures {
   margin-top: 20px;
   height: 180px;
