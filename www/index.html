@@ -23,11 +23,13 @@
 		<div id="search_container">
 			<br />
 			<input type="text" id="search_input" placeholder="Search">
-			<button onclick="$('#details_container').show();$('#map').hide();">(I)</button>
+			<button id="details_button" onclick="$('#details_container').show();$('#map').hide();$('#details_button').hide();">(I)</button>
 		</div>
 		
 		<div id="details_container">
 			<div class="details_head">
+			
+			<button onclick="$('#details_container').hide();$('#map').show();$('#details_button').show();">(X)</button>
 				<div id="details_weather" class="sun"></div>
 				<span id="details_title">Kloogaranna</span>
 				
@@ -37,7 +39,7 @@
 						<li class="star"></li>
 						<li class="star"></li>
 						<li class="star"></li>
-						<li class="star star_empty"></li>
+						<li class="star dimmed"></li>
 					</ul>
 					<span id="details_rating_num">(52)</span>
 				</div>
@@ -57,9 +59,17 @@
 			
 			<hr/>
 			
-			<div id="details_status">
-				<span class="details_header">Safe to swim here?</span>
-				<span class="details_header">Beach is clean?</span>
+			<div id="details_status_quality">
+				<div id="details_quality_bad" class="frowny inactive"></div>
+				<div id="details_quality_good" class="smiley active"></div>
+				<span class="details_text">Safe to swim here?</span>
+			</div>
+			
+			<div id="details_status_clean">
+				<div id="details_clean_bad" class="frowny active"></div>
+				<div id="details_clean_good" class="smiley inactive"></div>
+				<span class="details_text">Beach is clean?</span>
+				<div class="details_infotext">❤ Seems like this beach needs your helping hand.<br/>Why not meet with some friends to clean it up?<br/><br/><div style="text-align: center; font-weight: bold;">Tap here to start event</div></div>
 			</div>
 			
 			<hr/>

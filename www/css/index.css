@@ -41,7 +41,7 @@ html, body {
 #search_input {
 	display: block;
 	margin : 0 auto;
-	background: url('../img/ico_search_70.png') no-repeat scroll 6px 6px;
+	background: url('../img/ico_search_70.png') no-repeat scroll 8px 8px;
 	background-color: white;
 	background-size: 17px 17px;
 	font-family: "Sans Serif", Verdana, Arial;
@@ -99,8 +99,28 @@ ul#details_rating li {
 	background-size: 20px;
 }
 
-.star_empty {
-	opacity: 0.4;
+.smiley, .frowny  {
+	width: 40px;
+	height: 40px;
+	background-size: 40px !important;
+	float: right;
+	margin-right: 20px;
+}
+
+.smiley.active  {
+	background: url('../img/icon-smiley-Y-x2.png') no-repeat;
+}
+
+.smiley.inactive  {
+	background: url('../img/icon-smiley-Y-notactive-x2.png') no-repeat;
+}
+
+.frowny.active  {
+	background: url('../img/icon-smiley-N-x2.png') no-repeat;
+}
+
+.frowny.inactive  {
+	background: url('../img/icon-smiley-N-notactive-x2.png') no-repeat;
 }
 
 #details_weather {
@@ -123,6 +143,10 @@ ul#details_rating li {
 	background: url('../img/ico-weather-rain-x2.png') no-repeat;
 }
 
+.dimmed {
+	opacity: 0.4;
+}
+
 .details_temp_value {
 	font-size: 20pt;
 	font-weight: bold;
@@ -130,13 +154,28 @@ ul#details_rating li {
 }
 
 .details_wind_value  {
-	font-size: 16pt;
+	font-size: 12pt;
 	display: block;
 }
 
 .details_header {
 	color: #afafaf;
 	display: block;
+}
+
+.details_text {
+	font-size: 16pt;
+	display: block;
+	padding: 20px;
+}
+
+.details_infotext {
+	background-color: #FFCE55;
+	font-size: ;
+	color: white;
+	padding: 20px;
+	width: 80%;
+	margin: 0px auto;
 }
 
 #details_air , #details_wspeed {
