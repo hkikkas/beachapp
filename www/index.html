@@ -23,7 +23,7 @@
 		<!-- Search containers -->
 		<div id="search_container">
 			<br />
-			<input type="text" id="search_input" placeholder="Search" onsubmit="app.searchBeach();">
+			<input type="text" id="search_input" placeholder="Search" onsubmit="app.searchBeach(); $('#search_container').css('background-color','white');">
 		</div>
 
 		<div id="result_container"></div>
@@ -114,7 +114,7 @@
 			<div class="details_item" id="details_pictures">
 				<ul id="details_photos">
 					<li class="photo"><img src="img/photos/top_1.jpg" /></li>
-					<li class="photo"><img src="img/photos/top_2.jpg" onclick="$('#photo_container').show();$('#details_container').addClass( 'blurred' );" /></li>
+					<li class="photo"><img src="img/photos/top_2.jpg" onclick="$('#photo_container').show('fold');$('#details_container').addClass( 'blurred' );" /></li>
 					<li class="photo"><img src="img/photos/top_3.jpg" /></li>
 				</ul>
 				<ul id="details_photos">
@@ -136,7 +136,7 @@
 		<div id="feedback_container"><img src="img/feedback_screen.png" onclick="$('#details_container').show();$('#feedback_container').hide();"/></div>
 		
 		<!-- Photo "lightbox" container -->
-		<div id="photo_container"><img src="img/photos/top_2.jpg" onclick="$('#photo_container').hide();$('#details_container').removeClass( 'blurred' );"/></div>
+		<div id="photo_container"><img src="img/photos/top_2.jpg" onclick="$('#photo_container').hide('puff');$('#details_container').removeClass( 'blurred' );"/></div>
 		
 		<!-- Details infotext tmpl -->
 		<div id="details_infotext_tmpl">

@@ -225,7 +225,7 @@ var app = {
 			$.each(data, function(i, item) {
 				var tmplHTML = $('#' + app.resultContainerTmpl).html();
 				tmplHTML = tmplHTML.replace('%BEACH_ID%', item.bID);
-				tmplHTML = tmplHTML.replace('%BEACH_NAME%', item.bInfo.bwname);
+				tmplHTML = tmplHTML.replace('%BEACH_NAME%', item.bInfo.bwname.toLowerCase());
 				tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', item.bInfo.bwco);
 				
 				$('#' + app.resultContainerName).append(tmplHTML);
@@ -247,7 +247,7 @@ var app = {
 			
 			var tmplHTML = $('#' + app.resultContainerTmpl).html();
 			tmplHTML = tmplHTML.replace('%BEACH_ID%', 'nothing');
-			tmplHTML = tmplHTML.replace('%BEACH_NAME%', 'No results could be found');
+			tmplHTML = tmplHTML.replace('%BEACH_NAME%', '򗠀 Sorry. No beach found.');
 			tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', '');
 			
 			$('#' + app.resultContainerName).append(tmplHTML);

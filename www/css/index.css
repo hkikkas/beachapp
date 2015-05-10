@@ -42,7 +42,7 @@ html, body {
 
 #result_container {
 	display: none;
-	margin-left: 34px;
+	margin-left: 20px;
 	height: 90%;
 	overflow: auto;
 }
@@ -387,10 +387,11 @@ h1 {
 	background-size: 17px 17px;
 	font-size: 20px;
 	height: 50%;
-	width: 80%;
+	width: 90%;
 	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-	border: 0 solid #000000;
-	border-bottom-color: gray;
+	border: none;
+	border-bottom: 1px solid #e1e1e1;
+	text-transform: capitalize;
 }
 
 .first {
