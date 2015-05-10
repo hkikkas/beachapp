@@ -16,6 +16,8 @@ var app = {
 	resultContainerName: 'result_container',
 	resultContainerTmpl: 'result_tmpl',
 	
+	eventContainerTmpl: 'details_infotext_tmpl',
+	
 	// Application Constructor
 	initialize: function() {
 		this.bindEvents();
@@ -250,19 +252,39 @@ var app = {
 			
 			var beachSmiley = beachData.bWater[0].value;
 			if(beachSmiley == 'Excellent' || beachSmiley == 'Good' || beachSmiley == 'OK') {
-				newHTML = newHTML.replace('%FROWNY_ACTIVE%', 'inactive');
-				newHTML = newHTML.replace('%SMILEY_ACTIVE%', 'active');
+				newHTML = newHTML.replace('%FROWNY_ACTIVE_STATUS%', 'inactive');
+				newHTML = newHTML.replace('%SMILEY_ACTIVE_STATUS%', 'active');
 			} // if -> smiley
 			else {
-				newHTML = newHTML.replace('%FROWNY_ACTIVE%', 'active');
-				newHTML = newHTML.replace('%SMILEY_ACTIVE%', 'inactive');
+				newHTML = newHTML.replace('%FROWNY_ACTIVE_STATUS%', 'active');
+				newHTML = newHTML.replace('%SMILEY_ACTIVE_STATUS%', 'inactive');
 			} // else -> frowney
 	
 		} // if there is data
 		else {
-			newHTML = newHTML.replace('%FROWNY_ACTIVE%', 'active');
-			newHTML = newHTML.replace('%SMILEY_ACTIVE%', 'inactive');
+			newHTML = newHTML.replace('%FROWNY_ACTIVE_STATUS%', 'active');
+			newHTML = newHTML.replace('%SMILEY_ACTIVE_STATUS%', 'inactive');
 		} // else -> no measurements -> frowney
+		
+		var bClean = beachData.bClean;
+		if(bClean == '1') {
+			newHTML = newHTML.replace('%FROWNY_ACTIVE_CLEAN%', 'inactive');
+			newHTML = newHTML.replace('%SMILEY_ACTIVE_CLEAN%', 'active');
+			
+			// no sticker
+			newHTML = newHTML.replace('%BEACH_DETAILS_EVENT%', '');
+			
+		} // if beach is clean
+		else {
+			newHTML = newHTML.replace('%FROWNY_ACTIVE_CLEAN%', 'active');
+			newHTML = newHTML.replace('%SMILEY_ACTIVE_CLEAN%', 'inactive');
+			
+			// show also the "garbage collection" event sticker
+			var eventDetailsHTML = $('#' + app.eventContainerTmpl).html();
+			newHTML = newHTML.replace('%BEACH_DETAILS_EVENT%', eventDetailsHTML);
+			
+		} // else -> not clean
+		
 		
 		// and set the new data to the container
 		$('#' + app.beachContainerName).html(newHTML);

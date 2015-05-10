@@ -76,34 +76,27 @@
 			<hr/>
 			
 			<div id="details_status_quality">
-				<div id="details_quality_bad" class="frowny %FROWNY_ACTIVE%"></div>
-				<div id="details_quality_good" class="smiley %SMILEY_ACTIVE%"></div>
+				<div id="details_quality_bad" class="frowny %FROWNY_ACTIVE_STATUS%"></div>
+				<div id="details_quality_good" class="smiley %SMILEY_ACTIVE_STATUS%"></div>
 				<span class="details_text">Safe to swim here?</span>
 			</div>
 			
 			<div id="details_status_clean">
-				<div id="details_clean_bad" class="frowny inactive"></div>
-				<div id="details_clean_good" class="smiley active"></div>
+				<div id="details_clean_bad" class="frowny %FROWNY_ACTIVE_CLEAN%"></div>
+				<div id="details_clean_good" class="smiley %SMILEY_ACTIVE_CLEAN%"></div>
 				<span class="details_text">Beach is clean?</span>
 
-				<div class="details_infotext">
-					<span class="heart">❤</span>
-					<span style="z-index:10;">Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?</span>
-					<br/>
-					<div style="text-align: center;">
-						<button class="btn btn-checkin">Tap here to plan event</button>
-					</div>
-				</div>
+				%BEACH_DETAILS_EVENT%
 			</div>
 			
 			<div class="details_item_right">
 				<span class="details_header">Direction</span>
-				<span id="details_airtemp" class="details_item_value">↗ %WIND_DIRECTION%</span>
+				<span id="details_wdirection" class="details_item_value">↗ %WIND_DIRECTION%</span>
 			</div>
 			
 			<div class="details_item_left">
 				<span class="details_header">Wind speed</span>
-				<span id="details_watertemp" class="details_item_value">%WIND_SPEED% ms</span>
+				<span id="details_wspeed" class="details_item_value">%WIND_SPEED% ms</span>
 			</div>
 			
 			<hr/>
@@ -119,12 +112,12 @@
 			</div>
 			
 			<div class="details_item" id="details_pictures">
-				<ul id="details_photos">
+				<ul id="details_photos_top">
 					<li class="photo"><img src="img/photos/top_1.jpg" /></li>
 					<li class="photo"><img src="img/photos/top_2.jpg" onclick="$('#photo_container').show();$('#details_container').addClass( 'blurred' );" /></li>
 					<li class="photo"><img src="img/photos/top_3.jpg" /></li>
 				</ul>
-				<ul id="details_photos">
+				<ul id="details_photos_bottom">
 					<li class="photo"><img src="img/photos/bottom_1.jpg" /></li>
 					<li class="photo"><img src="img/photos/bottom_2.jpg" /></li>
 					<li class="photo"><img src="img/photos/bottom_3.jpg" /></li>
@@ -144,6 +137,19 @@
 		
 		<!-- Photo "lightbox" container -->
 		<div id="photo_container"><img src="img/photos/top_2.jpg" onclick="$('#photo_container').hide();$('#details_container').removeClass( 'blurred' );"/></div>
+		
+		<!-- Details infotext tmpl -->
+		<div id="details_infotext_tmpl">
+			<div class="details_infotext">
+				<span class="heart">❤</span>
+				<span style="z-index:10;">Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?</span>
+				<br/>
+				<div style="text-align: center;">
+					<button class="btn btn-checkin">Tap here to plan event</button>
+				</div>
+			</div>
+		</div>
+		<!-- Details infotext tmpl -->
 		
 		<!-- Beach details container template -->
 		
