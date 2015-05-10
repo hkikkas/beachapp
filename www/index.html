@@ -20,36 +20,30 @@
 		</div>
 		<!-- Splash screen -->
 		
+		<!-- Search containers -->
 		<div id="search_container">
 			<br />
 			<input type="text" id="search_input" placeholder="Search" onchange="$('#result_container').show(); $('#search_container').css('background-color','white');">
-			<button id="details_button" onclick="app.showDetails();" style="float: right;">(I)</button>
 		</div>
 
-    <div id="result_container">
-      <br />
-      <div>
-        <span class="result first" onclick="app.showDetails();">
-          <span class="name_of_beach">Pirita</span>
-          <span class="distance_to_beach">17 km</span>
-        </span>
-      </div>
-
-      <div>
-        <span class="result" onclick="app.showDetails();">
-          <span class="name_of_beach">Pärnu</span>
-          <span class="distance_to_beach">129 km</span>
-        </span>
-      </div>
-    </div>
+		<div id="result_container"></div>
 		
-		<div id="details_container">
+		<div id="result_tmpl">
+			<span class="result first" onclick="app.showDetails();">
+				<span class="name_of_beach">%BEACH_NAME%</span>
+				<span class="distance_to_beach">17 km</span>
+			</span>
+		</div>
+		<!-- Search containers -->
+		
+		<!-- Beach details container template -->
+		<div id="details_container_tmpl">
 			<button onclick="$('#details_container').hide();$('#map').show();$('#details_button').show();" style="margin: 20px;">(X)</button>
 			
 			<div class="details_head">
 			
 				<div id="details_weather" class="sun"></div>
-				<span id="details_title">Kloogaranna</span>
+				<span id="details_title">%BEACH_NAME%</span>
 				
 				<div>
 					<ul id="details_rating">
@@ -59,7 +53,7 @@
 						<li class="star"></li>
 						<li class="star dimmed"></li>
 					</ul>
-					<span id="details_rating_num">(52)</span>
+					<span id="details_rating_num">(44)</span>
 				</div>
 			</div>
 			
@@ -67,39 +61,38 @@
 			
 			<div id="details_water">
 				<span class="details_header">Water</span>
-				<span id="details_watertemp" class="details_temp_value">8°C</span>
+				<span id="details_watertemp" class="details_temp_value">%WATER_TEMP%°C</span>
 			</div>
 			
 			<div id="details_air">
 				<span class="details_header">Air</span>
-				<span id="details_airtemp" class="details_temp_value">20°C</span>
+				<span id="details_airtemp" class="details_temp_value">%WEATHER_TEMP%°C</span>
 			</div>
 			
 			<hr/>
 			
 			<div id="details_status_quality">
-				<div id="details_quality_bad" class="frowny inactive"></div>
-				<div id="details_quality_good" class="smiley active"></div>
+				<div id="details_quality_bad" class="frowny %FROWNY_ACTIVE%"></div>
+				<div id="details_quality_good" class="smiley %SMILEY_ACTIVE%"></div>
 				<span class="details_text">Safe to swim here?</span>
 			</div>
 			
 			<div id="details_status_clean">
-				<div id="details_clean_bad" class="frowny active"></div>
-				<div id="details_clean_good" class="smiley inactive"></div>
+				<div id="details_clean_bad" class="frowny inactive"></div>
+				<div id="details_clean_good" class="smiley active"></div>
 				<span class="details_text">Beach is clean?</span>
-				<div class="details_infotext"><div class="heart">❤</div> Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?<br/><br/><div style="text-align: center; font-weight: bold;">Tap here to plan event</div></div>
+				<div class="details_infotext"><div class="heart">❤</div> Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?
+					<br/><br/><div style="text-align: center; font-weight: bold;">Tap here to plan event</div></div>
 			</div>
-			
-			<br/>
 			
 			<div class="details_item_right">
 				<span class="details_header">Direction</span>
-				<span id="details_winddirection" class="details_item_value">↗ SW</span>
+				<span id="details_airtemp" class="details_item_value">↗ %WIND_DIRECTION%</span>
 			</div>
 			
 			<div class="details_item_left">
 				<span class="details_header">Wind speed</span>
-				<span id="details_windspeed" class="details_item_value">8 ms</span>
+				<span id="details_watertemp" class="details_item_value">%WIND_SPEED% ms</span>
 			</div>
 			
 			<hr/>
@@ -128,10 +121,15 @@
 			</div>
 			<div class="details_item">
 			<button class="btn btn-checkin">Check-In here</button>
-			<button class="btn btn-feedback">Are you here? Add feedback</button>
+			<button class="btn btn-feedback">Are you here? Add your feedback</button>
 			</div>
 		</div>
+		<!-- Beach details container template -->
 		
+		<!-- Beach details container -->
+		<div id="details_container"></div>
+		
+		<!-- The main map -->
 		<div id="map"></div>
 
 		<!-- JS loading at the end of the page -->
@@ -141,4 +139,3 @@
 		<script type="text/javascript" src="js/index.js"></script>
 	</body>
 </html>
-`

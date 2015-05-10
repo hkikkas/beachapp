@@ -68,6 +68,10 @@ html, body {
 	display: none;
 }
 
+#details_container_tmpl {
+	display: none;
+}
+
 .details_head {
 	padding: 20px;
 }
