@@ -50,7 +50,7 @@ var app = {
  
 		var mapOptions = {
 			center: myLatLng,
-			zoom: 10,
+			zoom: 9,
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			disableDefaultUI: true
 		};
@@ -102,7 +102,7 @@ var app = {
 		
 		var myLatLng = new google.maps.LatLng(59.4425, 24.634);
 		var mapOptions = {
-			zoom: 10,
+			zoom: 9,
 			center: myLatLng,
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			disableDefaultUI: true

@@ -79,6 +79,7 @@ html, body {
 #details_container  hr{
 	border: 1px solid #e1e1e1;
 	margin: 10px 20px;
+	color: #e1e1e1;
 }
 
 #details_title{
@@ -99,6 +100,7 @@ html, body {
 
 #details_rating_num{
   display: inline;
+  line-height: 16pt;
 }
 
 ul#details_rating li {
@@ -199,7 +201,7 @@ ul#details_rating li {
 
 .details_infotext {
 	background-color: #FFCE55;
-	font-size: ;
+	text-transform: none;
 	color: white;
 	padding: 15px;
 	width: 80%;
