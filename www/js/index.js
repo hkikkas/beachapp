@@ -18,6 +18,9 @@ var app = {
 	
 	eventContainerTmpl: 'details_infotext_tmpl',
 	
+	searchInput: 'search_input',
+	searchContainer : 'search_container',
+	
 	// Application Constructor
 	initialize: function() {
 		this.bindEvents();
@@ -191,10 +194,13 @@ var app = {
 	
 	searchBeach: function() {
 		
-		var beachName = $('#search_input').val();
+		var beachName = $('#' + app.searchInput).val();
+		
 		if(beachName.length < 3)
 			return;
-		
+		else // design changes
+			$('#' + app.searchContainer).css('background-color', 'White');
+
 		// construct the api call parameters
 		var apiCallParams = app.apiURL + '?s=' + beachName;
 		$.ajax({
@@ -211,26 +217,43 @@ var app = {
 		$('#' + app.resultContainerName).hide();
 		$('#' + app.resultContainerName).empty();
 		
-		if(data.length > 0) // hide the map
+		if(data.length > 0) {
 			$('#' + app.mapContainerName).hide();
 
-		// append search results
-		var newHTML = '';
-		$.each(data, function(i, item) {
+			// append search results
+			var newHTML = '';
+			$.each(data, function(i, item) {
+				var tmplHTML = $('#' + app.resultContainerTmpl).html();
+				tmplHTML = tmplHTML.replace('%BEACH_ID%', item.bID);
+				tmplHTML = tmplHTML.replace('%BEACH_NAME%', item.bInfo.bwname);
+				tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', item.bInfo.bwco);
+				
+				$('#' + app.resultContainerName).append(tmplHTML);
+				
+				// add click event to div based on beach id
+				$('#beach_' + item.bID).click( function() {
+					
+					// clear the search field & restore the background
+					$('#' + app.searchInput).val('');
+					$('#' + app.searchContainer).css('background-color', '#5d9cec');
+					
+					$('#' + app.resultContainerName).hide();
+					app.showBeachDetails(item);
+				});
+			});
+		} // if no results
+		else {
+			$('#' + app.mapContainerName).hide();
+			
 			var tmplHTML = $('#' + app.resultContainerTmpl).html();
-			tmplHTML = tmplHTML.replace('%BEACH_ID%', item.bID);
-			tmplHTML = tmplHTML.replace('%BEACH_NAME%', item.bInfo.bwname);
-			tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', item.bInfo.bwco);
+			tmplHTML = tmplHTML.replace('%BEACH_ID%', 'nothing');
+			tmplHTML = tmplHTML.replace('%BEACH_NAME%', 'No results could be found');
+			tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', '');
 			
 			$('#' + app.resultContainerName).append(tmplHTML);
 			
-			// add click event to div based on beach id
-			$('#beach_' + item.bID).click( function() {
-				$('#' + app.resultContainerName).hide();
-				app.showBeachDetails(item);
-			});
-		});
-
+		} // else -> show no results message
+		
 		// show the container
 		$('#' + app.resultContainerName).show();
 	},
