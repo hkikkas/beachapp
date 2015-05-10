@@ -186,6 +186,10 @@ ul#details_rating li {
 	display: block;
 }
 
+#result_tmpl {
+	display: none;
+}
+
 .details_text {
 	font-size: 12pt;
 	display: block;
