@@ -187,13 +187,14 @@ var app = {
 		});
 	},
 	
-	searchBeach: function( beachName ) {
+	searchBeach: function() {
 		
+		var beachName = $('#search_input').val();
 		if(beachName.length < 3)
 			return;
 		
 		// construct the api call parameters
-		var apiCallParams = app.apiURL + '?s=beachName';
+		var apiCallParams = app.apiURL + '?s=' + beachName;
 		$.ajax({
 			url: apiCallParams,
 			dataType: 'jsonp',
@@ -204,17 +205,36 @@ var app = {
 	
 	jsonpSearchCallback: function( data ) {
 	
+		// clear old results
+		$('#' + app.resultContainerName).hide();
+		$('#' + app.resultContainerName).empty();
+
+		// append search results
+		var newHTML = '';
 		$.each(data, function(i, item) {
+			var tmplHTML = $('#' + app.resultContainerTmpl).html();
+			tmplHTML = tmplHTML.replace('%BEACH_ID%', item.bID);
+			tmplHTML = tmplHTML.replace('%BEACH_NAME%', item.bInfo.bwname);
+			tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', item.bInfo.bwco);
 			
+			$('#' + app.resultContainerName).append(tmplHTML);
 			
+			// add click event to div based on beach id
+			$('#beach_' + item.bID).click( function() {
+				$('#' + app.resultContainerName).hide();
+				app.showBeachDetails(item);
+			});
 		});
+
+		// show the container
+		$('#' + app.resultContainerName).show();
 	},
 	
 	showBeachDetails: function( beachData ) {
 		
 		// get the html of the template, replace the parameters...
-		var currentHTML = $('#' + app.beachContainerTmpl).html();
-		var newHTML = currentHTML.replace('%BEACH_NAME%', beachData.bInfo.bwname);
+		var tmplHTML = $('#' + app.beachContainerTmpl).html();
+		var newHTML = tmplHTML.replace('%BEACH_NAME%', beachData.bInfo.bwname);
 		
 		// temperatures & wind speed
 		newHTML = newHTML.replace('%WATER_TEMP%', beachData.bWeather.t_wa);
@@ -249,5 +269,5 @@ var app = {
 	}
 };
  
-google.maps.event.addDomListener(window, 'load', app.fakeTheMap());
-//app.initialize();
+//google.maps.event.addDomListener(window, 'load', app.fakeTheMap());
+app.initialize();
