@@ -23,10 +23,11 @@
 		<div id="search_container">
 			<br />
 			<input type="text" id="search_input" placeholder="Search">
+			<button onclick="$('#details_container').show();$('#map').hide();">(I)</button>
 		</div>
 		
 		<div id="details_container">
-			<div class="details_header">
+			<div class="details_head">
 				<div id="details_weather" class="sun"></div>
 				<span id="details_title">Kloogaranna</span>
 				
@@ -55,6 +56,26 @@
 			</div>
 			
 			<hr/>
+			
+			<div id="details_status">
+				<span class="details_header">Safe to swim here?</span>
+				<span class="details_header">Beach is clean?</span>
+			</div>
+			
+			<hr/>
+			
+			<div id="details_wdirection">
+				<span class="details_header">Direction</span>
+				<span id="details_airtemp" class="details_wind_value">↗ SW</span>
+			</div>
+			
+			<div id="details_wspeed">
+				<span class="details_header">Wind speed</span>
+				<span id="details_watertemp" class="details_wind_value">8 ms</span>
+			</div>
+			
+			<hr/>
+			
 		</div>
 		
 		<div id="map"></div>

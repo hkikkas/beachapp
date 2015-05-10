@@ -57,16 +57,22 @@ html, body {
 	height: 100%;
 	background-color: white;
 	top: 10%;
-	padding: 20px;
 	color: black;
+	display: none;
+}
+
+.details_head {
+	padding: 20px;
 }
 
 #details_container  hr{
-	border-color: #e1e1e1;
+	border: 2px solid #e1e1e1;
+	margin: 10px 20px;
 }
 
 #details_title{
 	font-weight: bold;
+	font-size: 18pt;
 }
 
 #details_rating {
@@ -77,6 +83,7 @@ html, body {
   list-style: none;
   clear: both;
   position: relative;
+  display: initial;
 }
 
 ul#details_rating li {
@@ -93,14 +100,15 @@ ul#details_rating li {
 }
 
 .star_empty {
-	opacity: 0.5
+	opacity: 0.4;
 }
 
 #details_weather {
 	float: right;
-	background-size: 30px;
-	width: 30px;
-	height: 30px;
+	background-size: 50px;
+	width: 50px;
+	height: 50px;
+	margin: 10px;
 }
 
 .sun {
@@ -117,20 +125,29 @@ ul#details_rating li {
 
 .details_temp_value {
 	font-size: 20pt;
+	font-weight: bold;
+	display: block;
+}
+
+.details_wind_value  {
+	font-size: 16pt;
 	display: block;
 }
 
 .details_header {
 	color: #afafaf;
+	display: block;
 }
 
-#details_air {
+#details_air , #details_wspeed {
 	width: 50%;
+	padding: 10px 20px;
 }
 
-#details_water {
+#details_water, #details_wdirection {
 	width: 50%;
 	float: right;
+	padding: 10px 0px;
 }
 
 body {
@@ -144,8 +161,6 @@ body {
     padding:0px;
     text-transform:uppercase;
 }
-
-
 
 h1 {
     font-size:24px;
