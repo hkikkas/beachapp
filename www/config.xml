@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "org.beachspot.app"
-        version   = "1.0.15">
+        version   = "1.0.16">
 
     <name>Beachspot</name>
 

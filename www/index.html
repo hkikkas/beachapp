@@ -27,9 +27,10 @@
 		</div>
 		
 		<div id="details_container">
+			<button onclick="$('#details_container').hide();$('#map').show();$('#details_button').show();" style="margin: 20px;">(X)</button>
+			
 			<div class="details_head">
 			
-			<button onclick="$('#details_container').hide();$('#map').show();$('#details_button').show();">(X)</button>
 				<div id="details_weather" class="sun"></div>
 				<span id="details_title">Kloogaranna</span>
 				
@@ -69,19 +70,31 @@
 				<div id="details_clean_bad" class="frowny active"></div>
 				<div id="details_clean_good" class="smiley inactive"></div>
 				<span class="details_text">Beach is clean?</span>
-				<div class="details_infotext">❤ Seems like this beach needs your helping hand.<br/>Why not meet with some friends to clean it up?<br/><br/><div style="text-align: center; font-weight: bold;">Tap here to start event</div></div>
+				<div class="details_infotext"><div style="float: left; font-size: 24pt; color: red; margin-right: 10px;">❤</div> Seems like this beach needs your helping hand.<br/>Why not meet with some friends to clean it up?<br/><br/><div style="text-align: center; font-weight: bold;">Tap here to plan event</div></div>
 			</div>
 			
 			<hr/>
 			
-			<div id="details_wdirection">
+			<div class="details_item_right">
 				<span class="details_header">Direction</span>
-				<span id="details_airtemp" class="details_wind_value">↗ SW</span>
+				<span id="details_airtemp" class="details_item_value">↗ SW</span>
 			</div>
 			
-			<div id="details_wspeed">
+			<div class="details_item_left">
 				<span class="details_header">Wind speed</span>
-				<span id="details_watertemp" class="details_wind_value">8 ms</span>
+				<span id="details_watertemp" class="details_item_value">8 ms</span>
+			</div>
+			
+			<hr/>
+			
+			<div class="details_item_right">
+				<span class="details_header">Checked in lately</span>
+				<span id="details_checkins" class="details_item_value">12</span>
+			</div>
+			
+			<div class="details_item_left">
+				<span class="details_header"># of people</span>
+				<span id="details_people" class="details_item_value">0-50</span>
 			</div>
 			
 			<hr/>
