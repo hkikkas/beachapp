@@ -294,5 +294,16 @@ var app = {
 	}
 };
  
+$('#search_input').bind("enterKey",function(e){
+   app.searchBeach(); 
+   $('#search_container').css('background-color','white');
+});
+$('#search_input').keyup(function(e){
+    if(e.keyCode == 13)
+    {
+        $(this).trigger("enterKey");
+    }
+});
+ 
 //google.maps.event.addDomListener(window, 'load', app.fakeTheMap());
 app.initialize();
