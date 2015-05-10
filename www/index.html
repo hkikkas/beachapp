@@ -87,7 +87,13 @@
 				<div id="details_clean_bad" class="frowny active"></div>
 				<div id="details_clean_good" class="smiley inactive"></div>
 				<span class="details_text">Beach is clean?</span>
-				<div class="details_infotext"><div class="heart">❤</div> Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?<br/><br/><div style="text-align: center; font-weight: bold;">Tap here to plan event</div></div>
+				<div class="details_infotext">
+					<div class="heart">❤</div>
+					Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?
+					<br/><br/>
+				
+					<div style="text-align: center;"><button class="btn btn-checkin">Tap here to plan event</button></div>
+				</div>
 			</div>
 			
 			<br/>
@@ -111,14 +117,14 @@
 			
 			<div class="details_item_left">
 				<span class="details_header"># of people</span>
-				<span id="details_people" class="details_item_value">0-50</span>
+				<span id="details_people" class="details_item_value">30-50</span>
 			</div>
 			
 			<div class="details_item" id="details_pictures">
 				<ul id="details_photos">
-					<li class="photo"><img src="img/photos/top_1.jpg" /></li>
-					<li class="photo"><img src="img/photos/top_2.jpg" /></li>
-					<li class="photo"><img src="img/photos/top_3.jpg" /></li>
+					<li class="photo"><img src="img/photos/top_1.jpg" class="lightboxlink" /></li>
+					<li class="photo"><img src="img/photos/top_2.jpg" class="lightboxlink" /></li>
+					<li class="photo"><img src="img/photos/top_3.jpg" class="lightboxlink" /></li>
 				</ul>
 				<ul id="details_photos">
 					<li class="photo"><img src="img/photos/bottom_1.jpg" /></li>
@@ -126,10 +132,13 @@
 					<li class="photo"><img src="img/photos/bottom_3.jpg" /></li>
 				</ul>
 			</div>
+			
 			<div class="details_item">
-			<button class="btn btn-checkin">Check-In here</button>
-			<button class="btn btn-feedback">Are you here? Add feedback</button>
+				<button class="btn btn-checkin">Check-In here</button>
+				<button class="btn btn-feedback">Are you here? Add feedback</button>
 			</div>
+			
+			<br/>
 		</div>
 		
 		<div id="map"></div>

@@ -73,7 +73,7 @@ html, body {
 }
 
 #details_container  hr{
-	border: 2px solid #e1e1e1;
+	border: 1px solid #e1e1e1;
 	margin: 10px 20px;
 }
 
@@ -193,7 +193,7 @@ ul#details_rating li {
 	background-color: #FFCE55;
 	font-size: ;
 	color: white;
-	padding: 20px;
+	padding: 15px;
 	width: 80%;
 	margin: 0px auto;
 }
@@ -223,7 +223,7 @@ ul#details_rating li {
 
 #details_pictures {
   margin-top: 20px;
-  height: 200px;
+  height: 180px;
 }
 
 ul#details_photos li {
