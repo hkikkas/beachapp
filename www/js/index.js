@@ -197,11 +197,15 @@ var app = {
 		var beachName = $('#' + app.searchInput).val();
 		
 		if(beachName.length < 3) {
+			$('#' + app.searchContainer).css('background-color', 'lightsalmon');
 			$('#' + app.searchInput).css('border', '2px solid red');
-			return;}
-		else { // design changes
+			$('#' + app.resultContainerName).hide();
+			$('#' + app.mapContainerName).show();
+			return;
+		} else { 
+			// design changes
 			$('#' + app.searchInput).css('border', 'none');
-			$('#' + app.searchContainer).css('background-color', 'White');
+			$('#' + app.searchContainer).css('background-color', 'white');
 			}
 
 		// construct the api call parameters
@@ -316,13 +320,12 @@ var app = {
 		$('#' + app.beachContainerName).html(newHTML);
 		
 		$('#' + app.beachContainerName).animate({width:'toggle'}, 300);
-		$('#map').hide();
+		$('#' + app.mapContainerName).hide();
 	}
 };
  
 $('#search_input').bind("enterKey",function(e){
-   app.searchBeach(); 
-   $('#search_container').css('background-color','white');
+   app.searchBeach();
 });
 $('#search_input').keyup(function(e){
     if(e.keyCode == 13)
