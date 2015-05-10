@@ -131,11 +131,15 @@
 			
 			<div class="details_item">
 				<button class="btn btn-checkin">Check-In here</button>
-				<button class="btn btn-feedback">Are you here? Add your feedback</button>
+				<button class="btn btn-feedback" onclick="$('#details_container').hide();$('#feedback_container').show();">Are you here? Add your feedback</button>
 			</div>
 			
 			<br/>
 		</div>
+		
+		<!-- Feedback screen container -->
+		<div id="feedback_container"><img src="img/feedback_screen.png" onclick="$('#details_container').show();$('#feedback_container').hide();"/></div>
+		
 		<!-- Beach details container template -->
 		
 		<!-- Beach details container -->

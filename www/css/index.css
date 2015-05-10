@@ -206,6 +206,7 @@ ul#details_rating li {
 	padding: 15px;
 	width: 80%;
 	margin: 0px auto;
+	font-size: 16pt;
 }
 .details_item {
 	padding: 10px 20px;
@@ -267,6 +268,18 @@ ul#details_photos li {
 
 .btn-checkin {
 	background-color: #5D9CEC;
+}
+
+#feedback_container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	display: none;
+}
+
+#feedback_container img {
+	width: 100%;
 }
 
 body {
