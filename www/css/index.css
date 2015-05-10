@@ -103,12 +103,20 @@ ul#details_rating li {
 	background-size: 20px;
 }
 
+.heart {
+	float: left; 
+	font-size: 24pt; 
+	color: #FD5C4A; 
+	margin-right: 10px;
+}
+
 .smiley, .frowny  {
 	width: 30px;
 	height: 30px;
 	background-size: 30px !important;
 	float: right;
 	margin-right: 20px;
+	margin-top: 20px;
 }
 
 .smiley.active  {
@@ -168,9 +176,10 @@ ul#details_rating li {
 }
 
 .details_text {
-	font-size: 14pt;
+	font-size: 12pt;
 	display: block;
 	padding: 20px;
+	text-transform: none;
 }
 
 .details_infotext {
@@ -180,6 +189,9 @@ ul#details_rating li {
 	padding: 20px;
 	width: 80%;
 	margin: 0px auto;
+}
+.details_item {
+	padding: 10px 20px;
 }
 
 #details_air , #details_wspeed, .details_item_left{
@@ -191,6 +203,27 @@ ul#details_rating li {
 	width: 50%;
 	float: right;
 	padding: 10px 0px;
+}
+
+#details_photos {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  clear: both;
+  position: relative;
+  display: inline;
+}
+
+#details_pictures {
+  margin-top: 20px;
+}
+
+ul#details_photos li {
+  float: left;
+}
+
+.photo {
+	width: 33%;
 }
 
 body {
