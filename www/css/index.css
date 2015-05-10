@@ -222,7 +222,7 @@ ul#details_rating li {
 
 #details_pictures {
   margin-top: 20px;
-  height: 260px;
+  height: 200px;
 }
 
 ul#details_photos li {
@@ -247,6 +247,7 @@ ul#details_photos li {
 	font-size: 12pt;
 	font-weight: bold;
 	margin-top: 20px;
+	text-transform: none;
 }
 
 .btn-feedback{
