@@ -219,12 +219,12 @@ ul#details_rating li {
 	padding: 10px 20px;
 }
 
-#details_air , #details_wspeed, .details_item_left{
+#details_air , .details_item_left{
 	width: 50%;
 	padding: 10px 20px;
 }
 
-#details_water, #details_wdirection , .details_item_right{
+#details_water, .details_item_right{
 	width: 50%;
 	float: right;
 	padding: 10px 0px;
