@@ -22,8 +22,8 @@
 		
 		<div id="search_container">
 			<br />
-			<input type="text" id="search_input" placeholder="Search">
-			<button id="details_button" onclick="$('#details_container').show();$('#map').hide();$('#details_button').hide();">(I)</button>
+			<input type="text" id="search_input" placeholder="Search" oninput="$('#result_container').show(); $('#search_container').css('background-color','white');">
+			<button id="details_button" onclick="$('#details_container').show();$('#map').hide();$('#details_button').hide();" style="float: right;">(I)</button>
 		</div>
 
     <div id="result_container">

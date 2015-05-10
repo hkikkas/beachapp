@@ -35,9 +35,13 @@ html, body {
 #search_container {
 	width: 100%;
 	height: 10%;
-	background-color: white;
+	background-color: #5d9cec;
     border: 0 solid #000000;
     border-bottom-width: 1px;
+}
+
+#result_container {
+	display: none;
 }
 
 #search_input {
@@ -118,7 +122,7 @@ ul#details_rating li {
 	background-size: 30px !important;
 	float: right;
 	margin-right: 20px;
-	margin-top: 20px;
+	margin-top: 14px;
 }
 
 .smiley.active  {
@@ -218,6 +222,7 @@ ul#details_rating li {
 
 #details_pictures {
   margin-top: 20px;
+  height: 260px;
 }
 
 ul#details_photos li {
@@ -226,6 +231,10 @@ ul#details_photos li {
 
 .photo {
 	width: 33%;
+}
+
+.photo img {
+	width: 95%;
 }
 
 body {
