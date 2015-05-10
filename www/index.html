@@ -121,7 +121,7 @@
 			<div class="details_item" id="details_pictures">
 				<ul id="details_photos">
 					<li class="photo"><img src="img/photos/top_1.jpg" /></li>
-					<li class="photo"><img src="img/photos/top_2.jpg" /></li>
+					<li class="photo"><img src="img/photos/top_2.jpg" onclick="$('#photo_container').show();$('#details_container').addClass( 'blurred' );" /></li>
 					<li class="photo"><img src="img/photos/top_3.jpg" /></li>
 				</ul>
 				<ul id="details_photos">
@@ -141,6 +141,9 @@
 		
 		<!-- Feedback screen container -->
 		<div id="feedback_container"><img src="img/feedback_screen.png" onclick="$('#details_container').show();$('#feedback_container').hide();"/></div>
+		
+		<!-- Photo "lightbox" container -->
+		<div id="photo_container"><img src="img/photos/top_2.jpg" onclick="$('#photo_container').hide();$('#details_container').removeClass( 'blurred' );"/></div>
 		
 		<!-- Beach details container template -->
 		
