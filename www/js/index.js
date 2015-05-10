@@ -2,13 +2,19 @@ var app = {
 	
 	apiURL: "http://beachspot.org/test/",
 	
-	mapContainerName: "map",
+	mapContainerName: 'map',
 	mapObject: "",
 	mapBounds: new google.maps.LatLngBounds(),
 	
 	markersArray: [],
 	markerImage: 'img/map/marker2.png',
-	mylocationImage: 'img/map/mylocation.png',
+	myLocationImage: 'img/map/mylocation.png',
+	
+	beachContainerName: 'details_container',
+	beachContainerTmpl: 'details_container_tmpl',
+	
+	resultContainerName: 'result_container',
+	resultContainerTmpl: 'result_tmpl',
 	
 	// Application Constructor
 	initialize: function() {
@@ -31,36 +37,41 @@ var app = {
 	// The scope of 'this' is the event. In order to call the 'receivedEvent'
 	// function, we must explicitly call 'app.receivedEvent(...);'
 	onDeviceReady: function() {
-	   // app.receivedEvent('deviceready');
-	   navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
+		
+		// app.receivedEvent('deviceready');
+		navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
 	},
  
-	onSuccess: function(position) {
+	onSuccess: function( position ) {
 
 		var longitude = position.coords.longitude;
 		var latitude = position.coords.latitude;
-		var myLatLong = new google.maps.LatLng(latitude, longitude);
+		var myLatLng = new google.maps.LatLng(latitude, longitude);
  
 		var mapOptions = {
-			center: myLatLong,
+			center: myLatLng,
 			zoom: 10,
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			disableDefaultUI: true
 		};
-
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
 
-		//TODO: Currently the location marker is shown north of the actual location, e.g. myLatLong is bottom center of the marker
-		var marker = new google.maps.Marker({
-				position: myLatLong,
+		var myLocationMarkerImage = {
+			url: app.myLocationImage,
+			size: new google.maps.Size(48, 48), // marker image size
+			origin: new google.maps.Point(0,0), // image origin
+			anchor: new google.maps.Point(24, 24) // contact with the map offset
+		};
+
+		var myLocationMarker = new google.maps.Marker({
+				position: myLatLng,
 				map: app.mapObject,
-				icon: app.mylocationImage,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				icon: myLocationMarkerImage,
 				title: "Your location"
-			});
+		});
 			
 		// push markers to global array
-		app.markersArray.push(marker);
+		app.markersArray.push(myLocationMarker);
 		
 		// add listener for bounds changed event
 		google.maps.event.addListener(app.mapObject, 'bounds_changed', function() {
@@ -89,25 +100,31 @@ var app = {
 		// hide the splash
 		$('#splash_screen').hide();
 		
-		var myLatlng = new google.maps.LatLng(59.4425, 24.634);
+		var myLatLng = new google.maps.LatLng(59.4425, 24.634);
 		var mapOptions = {
 			zoom: 10,
-			center: myLatlng,
+			center: myLatLng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			disableDefaultUI: true
 		}
 		app.mapObject = new google.maps.Map(document.getElementById(app.mapContainerName), mapOptions);
 		
-		//TODO: Currently the location marker is shown north of the actual location, e.g. myLatLong is bottom center of the marker	
-		var marker = new google.maps.Marker({
-			position: myLatlng,
-			map: app.mapObject,
-			icon: app.mylocationImage,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			title: "Your location"
+		var myLocationMarkerImage = {
+			url: app.myLocationImage,
+			size: new google.maps.Size(48, 48), // marker image size
+			origin: new google.maps.Point(0,0), // image origin
+			anchor: new google.maps.Point(24, 24) // contact with the map offset
+		};
+
+		var myLocationMarker = new google.maps.Marker({
+				position: myLatLng,
+				map: app.mapObject,
+				icon: myLocationMarkerImage,
+				title: "Your location"
 		});
 			
 		// push markers to global array
-		app.markersArray.push(marker);
+		app.markersArray.push(myLocationMarker);
 		
 		// add listener for bounds changed event
 		google.maps.event.addListener(app.mapObject, 'bounds_changed', function() {
@@ -138,11 +155,6 @@ var app = {
 		$('#' + app.mapContainerName).toggle();
 	},
 	
-	showDetails: function (locationID) {
-		$('#details_container').show();
-		$('#map').hide();
-	},
-	
 	clearMarkers: function() {
 		for (var i = 1; i < app.markersArray.length; i++ ) {
 			app.markersArray[i].setMap(null);
@@ -156,20 +168,84 @@ var app = {
 		app.clearMarkers();
 	
 		$.each(data, function(i, item) {
-			var markerLatlng = new google.maps.LatLng(data[i].bLat, data[i].bLon);
+			var markerLatLng = new google.maps.LatLng(data[i].bLat, data[i].bLon);
 			
 			var marker = new google.maps.Marker({
-				position: markerLatlng,
+				position: markerLatLng,
 				map: app.mapObject,
 				icon: app.markerImage,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				title: data[i].bInfo.bwname
+			});
+			
+			google.maps.event.addListener(marker, 'click', function() {
+				app.showBeachDetails(item);
 			});
 			
 			// push markers to global array
 			app.markersArray.push(marker);
 
 		});
+	},
+	
+	searchBeach: function( beachName ) {
+		
+		if(beachName.length < 3)
+			return;
+		
+		// construct the api call parameters
+		var apiCallParams = app.apiURL + '?s=beachName';
+		$.ajax({
+			url: apiCallParams,
+			dataType: 'jsonp',
+			jsonp: 'callback',
+			jsonpCallback: 'app.jsonpSearchCallback',
+		});
+	},
+	
+	jsonpSearchCallback: function( data ) {
+	
+		$.each(data, function(i, item) {
+			
+			
+		});
+	},
+	
+	showBeachDetails: function( beachData ) {
+		
+		// get the html of the template, replace the parameters...
+		var currentHTML = $('#' + app.beachContainerTmpl).html();
+		var newHTML = currentHTML.replace('%BEACH_NAME%', beachData.bInfo.bwname);
+		
+		// temperatures & wind speed
+		newHTML = newHTML.replace('%WATER_TEMP%', beachData.bWeather.t_wa);
+		newHTML = newHTML.replace('%WEATHER_TEMP%', beachData.bWeather.t_we);
+		newHTML = newHTML.replace('%WIND_DIRECTION%', beachData.bWeather.w_di);
+		newHTML = newHTML.replace('%WIND_SPEED%', beachData.bWeather.w_sp);
+		
+		// decide the smileys
+		if(beachData.bWater.length == 1) {
+			
+			var beachSmiley = beachData.bWater[0].value;
+			if(beachSmiley == 'Excellent' || beachSmiley == 'Good' || beachSmiley == 'OK') {
+				newHTML = newHTML.replace('%FROWNY_ACTIVE%', 'inactive');
+				newHTML = newHTML.replace('%SMILEY_ACTIVE%', 'active');
+			} // if -> smiley
+			else {
+				newHTML = newHTML.replace('%FROWNY_ACTIVE%', 'active');
+				newHTML = newHTML.replace('%SMILEY_ACTIVE%', 'inactive');
+			} // else -> frowney
+	
+		} // if there is data
+		else {
+			newHTML = newHTML.replace('%FROWNY_ACTIVE%', 'active');
+			newHTML = newHTML.replace('%SMILEY_ACTIVE%', 'inactive');
+		} // else -> no measurements -> frowney
+		
+		// and set the new data to the container
+		$('#' + app.beachContainerName).html(newHTML);
+		
+		$('#' + app.beachContainerName).animate({width:'toggle'}, 300);
+		$('#map').hide();
 	}
 };
  
