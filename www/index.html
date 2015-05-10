@@ -76,24 +76,17 @@
 			<hr/>
 			
 			<div id="details_status_quality">
-				<div id="details_quality_bad" class="frowny %FROWNY_ACTIVE%"></div>
-				<div id="details_quality_good" class="smiley %SMILEY_ACTIVE%"></div>
+				<div id="details_quality_bad" class="frowny %FROWNY_ACTIVE_STATUS%"></div>
+				<div id="details_quality_good" class="smiley %SMILEY_ACTIVE_STATUS%"></div>
 				<span class="details_text">Safe to swim here?</span>
 			</div>
 			
 			<div id="details_status_clean">
-				<div id="details_clean_bad" class="frowny inactive"></div>
-				<div id="details_clean_good" class="smiley active"></div>
+				<div id="details_clean_bad" class="frowny %FROWNY_ACTIVE_CLEAN%"></div>
+				<div id="details_clean_good" class="smiley %SMILEY_ACTIVE_CLEAN%"></div>
 				<span class="details_text">Beach is clean?</span>
 
-				<div class="details_infotext">
-					<span class="heart">❤</span>
-					<span style="z-index:10;">Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?</span>
-					<br/>
-					<div style="text-align: center;">
-						<button class="btn btn-checkin">Tap here to plan event</button>
-					</div>
-				</div>
+				%BEACH_DETAILS_EVENT%
 			</div>
 			
 			<div class="details_item_right">
@@ -141,6 +134,19 @@
 		
 		<!-- Feedback screen container -->
 		<div id="feedback_container"><img src="img/feedback_screen.png" onclick="$('#details_container').show();$('#feedback_container').hide();"/></div>
+		
+		<!-- Details infotext tmpl -->
+		<div id="details_infotext_tmpl">
+			<div class="details_infotext">
+				<span class="heart">❤</span>
+				<span style="z-index:10;">Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?</span>
+				<br/>
+				<div style="text-align: center;">
+					<button class="btn btn-checkin">Tap here to plan event</button>
+				</div>
+			</div>
+		</div>
+		<!-- Details infotext tmpl -->
 		
 		<!-- Beach details container template -->
 		

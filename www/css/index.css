@@ -210,6 +210,11 @@ ul#details_rating li {
 	margin: 0px auto;
 	font-size: 12pt;
 }
+
+#details_infotext_tmpl {
+	display: none;
+}
+
 .details_item {
 	padding: 10px 20px;
 }
