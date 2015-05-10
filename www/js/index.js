@@ -18,6 +18,9 @@ var app = {
 	
 	eventContainerTmpl: 'details_infotext_tmpl',
 	
+	searchInput: 'search_input',
+	searchContainer : 'search_container',
+	
 	// Application Constructor
 	initialize: function() {
 		this.bindEvents();
@@ -191,10 +194,13 @@ var app = {
 	
 	searchBeach: function() {
 		
-		var beachName = $('#search_input').val();
+		var beachName = $('#' + app.searchInput).val();
+		
 		if(beachName.length < 3)
 			return;
-		
+		else // design changes
+			$('#' + app.searchContainer).css('background-color', 'White');
+
 		// construct the api call parameters
 		var apiCallParams = app.apiURL + '?s=' + beachName;
 		$.ajax({
@@ -226,6 +232,11 @@ var app = {
 				
 				// add click event to div based on beach id
 				$('#beach_' + item.bID).click( function() {
+					
+					// clear the search field & restore the background
+					$('#' + app.searchInput).val('');
+					$('#' + app.searchContainer).css('background-color', '#5d9cec');
+					
 					$('#' + app.resultContainerName).hide();
 					app.showBeachDetails(item);
 				});
