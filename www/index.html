@@ -22,8 +22,8 @@
 		
 		<div id="search_container">
 			<br />
-			<input type="text" id="search_input" placeholder="Search" oninput="$('#result_container').show(); $('#search_container').css('background-color','white');">
-			<button id="details_button" onclick="$('#details_container').show();$('#map').hide();$('#details_button').hide();" style="float: right;">(I)</button>
+			<input type="text" id="search_input" placeholder="Search" onchange="$('#result_container').show(); $('#search_container').css('background-color','white');">
+			<button id="details_button" onclick="app.showDetails();" style="float: right;">(I)</button>
 		</div>
 
     <div id="result_container">
@@ -84,8 +84,6 @@
 				<div class="details_infotext"><div class="heart">❤</div> Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?<br/><br/><div style="text-align: center; font-weight: bold;">Tap here to plan event</div></div>
 			</div>
 			
-			<hr/>
-			
 			<div class="details_item_right">
 				<span class="details_header">Direction</span>
 				<span id="details_airtemp" class="details_item_value">↗ SW</span>
@@ -108,8 +106,6 @@
 				<span id="details_people" class="details_item_value">0-50</span>
 			</div>
 			
-			<hr/>
-			
 			<div class="details_item" id="details_pictures">
 				<ul id="details_photos">
 					<li class="photo"><img src="img/photos/top_1.jpg" /></li>
@@ -122,9 +118,10 @@
 					<li class="photo"><img src="img/photos/bottom_3.jpg" /></li>
 				</ul>
 			</div>
-			<br/>
-			<hr/>
-			
+			<div class="details_item">
+			<button class="btn btn-checkin">Check-In here</button>
+			<button class="btn btn-feedback">Are you here? Add your feedback</button>
+			</div>
 		</div>
 		
 		<div id="map"></div>

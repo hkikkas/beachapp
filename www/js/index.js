@@ -138,6 +138,11 @@ var app = {
 		$('#' + app.mapContainerName).toggle();
 	},
 	
+	showDetails: function (locationID) {
+		$('#details_container').show();
+		$('#map').hide();
+	},
+	
 	clearMarkers: function() {
 		for (var i = 1; i < app.markersArray.length; i++ ) {
 			app.markersArray[i].setMap(null);

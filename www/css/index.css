@@ -237,6 +237,26 @@ ul#details_photos li {
 	width: 95%;
 }
 
+.btn {
+	display: block;
+	border-radius: 4px;
+	border: none;
+	padding: 15px;
+	width: 100%;
+	color: white;
+	font-size: 12pt;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.btn-feedback{
+	background-color: #60C641;
+}
+
+.btn-checkin {
+	background-color: #5D9CEC;
+}
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
