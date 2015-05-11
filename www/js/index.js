@@ -25,6 +25,8 @@
 	errorFriendlyName: 'error_friendly',
 	errorMessageName: 'error_message',
 	
+	locationName: 'location_btn',
+	
 	state: 'home',
 	
 	// Application Constructor
@@ -172,6 +174,15 @@
 	
 	toggleMap: function() {
 		$('#' + app.mapContainerName).toggle();
+	},
+	
+	showBeachLocation: function() {
+		var center = new google.maps.LatLng($('#' + app.locationName).attr("data-lat"), $('#' + app.locationName).attr("data-lng"));
+		
+		app.mapObject.setZoom(11);
+		app.mapObject.setCenter(center);
+		$('#' + app.beachContainerName).hide();
+		$('#' + app.mapContainerName).show();
 	},
 	
 	onBackKeyDown: function() {
@@ -337,7 +348,6 @@
 			ratinglist += "<li class='star dimmed'></li>";
 		}
 		newHTML = newHTML.replace('%RATING_STARS%', ratinglist);
-		
 		newHTML = newHTML.replace('%RATING_COUNT%', Math.floor((Math.random() * 50) + 1));
 		
 		// temperatures & wind speed
@@ -387,6 +397,9 @@
 		
 		// and set the new data to the container
 		$('#' + app.beachContainerName).html(newHTML);
+		
+		$('#' + app.locationName).attr("data-lat", beachData.bLat);
+		$('#' + app.locationName).attr("data-lng", beachData.bLon);
 		
 		$('#' + app.beachContainerName).animate({width:'toggle'}, 300);
 		$('#' + app.mapContainerName).hide();

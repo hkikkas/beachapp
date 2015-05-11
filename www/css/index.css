@@ -73,6 +73,13 @@ html, body {
 	box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px -1px;
 }
 
+@media screen and (min-width:0\0) {
+    /* IE9 and IE10 rule sets go here */
+	.search_dropshadow  #search_input{
+		box-shadow: 0px 2px 5px #333;
+	}
+}
+
 .bluebox {
 	background-color: #5d9cec !important;
 }
@@ -317,6 +324,14 @@ ul#details_photos li {
 	margin: 10px 20px 0px 20px; 
 	border: none; 
 	background-color: white;
+}
+
+.btn-location {
+	background: url('../img/ui/ico-location.png') no-repeat;
+	background-size: 27px 27px;
+	border: none; 
+	height: 27px;
+	width: 27px;
 }
 
 .blurred {
