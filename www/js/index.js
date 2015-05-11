@@ -181,6 +181,7 @@
 		
 		app.mapObject.setZoom(11);
 		app.mapObject.setCenter(center);
+		$('#' + app.searchContainer).removeClass('bluebox');
 		$('#' + app.beachContainerName).hide();
 		$('#' + app.mapContainerName).show();
 	},
