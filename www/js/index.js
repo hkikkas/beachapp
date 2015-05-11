@@ -161,10 +161,10 @@
 	
 	onError: function(error){
 		if(error.code == "1")
-			$('#' + app.errorFriendlyName).innerHTML("Please enable location services on your mobile. We would like to know where you are so we can show you great beaches nearby.");
+			$('#' + app.errorFriendlyName).html("Please enable location services on your mobile. We would like to know where you are so we can show you great beaches nearby.");
 		else
-			$('#' + app.errorFriendlyName).innerHTML("Oups.<br/>We did not want this to happen.<br/><br/>Please contact us with the following error message:");
-		$('#' + app.errorMessageName).innerHTML("Code " + error.code + " - " + error.message);
+			$('#' + app.errorFriendlyName).html("Oups.<br/>We did not want this to happen.<br/><br/>Please contact us with the following error message:");
+		$('#' + app.errorMessageName).html("Code " + error.code + " - " + error.message);
 		$('#' + app.errorContainerName).show();
 	},
 	
