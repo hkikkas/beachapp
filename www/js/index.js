@@ -310,6 +310,7 @@
 		newHTML = newHTML.replace('%WIND_DIRECTION%', beachData.bWeather.w_di);
 		newHTML = newHTML.replace('%WIND_DIRECTION_ARROW%', directionArray[beachData.bWeather.w_di]);
 		newHTML = newHTML.replace('%WIND_SPEED%', beachData.bWeather.w_sp);
+		newHTML = newHTML.replace('%RATING_COUNT%', Math.floor((Math.random() * 50) + 1));
 		
 		// decide the smileys
 		if(beachData.bWater.length == 1) {
