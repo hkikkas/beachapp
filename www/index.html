@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -21,7 +21,7 @@
 		<!-- Splash screen -->
 		
 		<!-- Search containers -->
-		<div id="search_container">
+		<div id="search_container" class="search_dropshadow">
 			<br />
 			<input type="text" id="search_input" placeholder="Find beach by name">
 		</div>
@@ -41,7 +41,7 @@
 		<!-- Beach details container template -->
 		<div id="details_container_tmpl">
 			<div style="text-align: right;">
-				<button onclick="$('#details_container').hide(); $('#map').show();" style="margin: 10px 20px 0px 20px; border: none; background-color: white;">❌</button>
+				<button onclick="app.closeDetails()" class="btn-close">❌</button>
 			</div>
 			
 			<div class="details_head">
@@ -57,7 +57,7 @@
 						<li class="star"></li>
 						<li class="star dimmed"></li>
 					</ul>
-					<span id="details_rating_num">(44)</span>
+					<span id="details_rating_num">(%RATING_COUNT%)</span>
 				</div>
 			</div>
 			
@@ -91,7 +91,7 @@
 			
 			<div class="details_item_right">
 				<span class="details_header">Direction</span>
-				<span id="details_wdirection" class="details_item_value">↗ %WIND_DIRECTION%</span>
+				<span id="details_wdirection" class="details_item_value">%WIND_DIRECTION_ARROW% %WIND_DIRECTION%</span>
 			</div>
 			
 			<div class="details_item_left">
@@ -125,7 +125,7 @@
 			</div>
 			
 			<div class="details_item">
-				<button class="btn btn-checkin">Check-In here</button>
+				<button class="btn btn-checkin">Check-in here</button>
 				<button class="btn btn-feedback" onclick="$('#details_container').hide();$('#feedback_container').show();">Are you here? Add your feedback</button>
 			</div>
 			
@@ -142,7 +142,7 @@
 		<div id="details_infotext_tmpl">
 			<div class="details_infotext">
 				<span class="heart">❤</span>
-				<span style="z-index:10;">Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?</span>
+				<span>Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?</span>
 				<br/>
 				<div style="text-align: center;">
 					<button class="btn btn-checkin">Tap here to plan event</button>

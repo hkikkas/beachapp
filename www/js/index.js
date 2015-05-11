@@ -1,4 +1,4 @@
-var app = {
+﻿var app = {
 	
 	apiURL: "http://beachspot.org/test/",
 	
@@ -46,7 +46,7 @@ var app = {
 		// app.receivedEvent('deviceready');
 		navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
 		
-		document.addEventListener("backbutton", onBackKeyDown, false);
+		document.addEventListener("backbutton", app.onBackKeyDown, false);
 
 	},
  
@@ -174,6 +174,12 @@ var app = {
 		app.markersArray.length = 1;
 	},
 	
+	closeDetails: function() {
+		$('#' + app.searchContainer).removeClass('bluebox');
+		$('#' + app.beachContainerName).hide();
+		$('#' + app.mapContainerName).show();
+	},
+	
 	jsonpCallback: function( data ) {
 
 		// clear old markers
@@ -190,6 +196,7 @@ var app = {
 			});
 			
 			google.maps.event.addListener(marker, 'click', function() {
+				$('#' + app.searchContainer).addClass('bluebox');
 				app.showBeachDetails(item);
 			});
 			
@@ -204,15 +211,23 @@ var app = {
 		var beachName = $('#' + app.searchInput).val();
 		
 		if(beachName.length < 3) {
-			$('#' + app.searchContainer).css('background-color', 'lightsalmon');
-			$('#' + app.searchInput).css('border', '2px solid red');
+			//$('#' + app.searchContainer).css('background-color', 'lightsalmon');
+			if(beachName.length == 0)
+				$('#' + app.searchContainer).removeClass('search_error');
+			else
+				$('#' + app.searchContainer).addClass('search_error');
+			$('#' + app.searchContainer).addClass('search_dropshadow');
+			$('#' + app.searchContainer).removeClass('bluebox');
 			$('#' + app.resultContainerName).hide();
+			$('#' + app.resultContainerName).empty();
 			$('#' + app.mapContainerName).show();
 			return;
 		} else { 
 			// design changes
-			$('#' + app.searchInput).css('border', 'none');
-			$('#' + app.searchContainer).css('background-color', 'white');
+			$('#' + app.searchContainer).removeClass('search_error');
+			$('#' + app.searchContainer).removeClass('search_dropshadow');
+			$('#' + app.searchContainer).removeClass('bluebox');
+			//$('#' + app.searchContainer).css('background-color', 'white');
 			}
 
 		// construct the api call parameters
@@ -249,7 +264,7 @@ var app = {
 					
 					// clear the search field & restore the background
 					$('#' + app.searchInput).val('');
-					$('#' + app.searchContainer).css('background-color', '#5d9cec');
+					$('#' + app.searchContainer).addClass('bluebox');
 					
 					$('#' + app.resultContainerName).hide();
 					app.showBeachDetails(item);
@@ -261,7 +276,7 @@ var app = {
 			
 			var tmplHTML = $('#' + app.resultContainerTmpl).html();
 			tmplHTML = tmplHTML.replace('%BEACH_ID%', 'nothing');
-			tmplHTML = tmplHTML.replace('%BEACH_NAME%', '򗠀 Sorry. No beach found.');
+			tmplHTML = tmplHTML.replace('%BEACH_NAME%', ' Sorry. No beach found.');
 			tmplHTML = tmplHTML.replace('%BEACH_COUNTRY%', '');
 			
 			$('#' + app.resultContainerName).append(tmplHTML);
@@ -269,10 +284,12 @@ var app = {
 		} // else -> show no results message
 		
 		// show the container
+		$('#' + app.searchContainer).removeClass('search_dropshadow');
 		$('#' + app.resultContainerName).show();
 	},
 	
 	showBeachDetails: function( beachData ) {
+		var directionArray = {"N": "⬆", "NE": "↗", "E": "➡", "SE": "↘", "S": "⬇", "SW": "↙", "W": "⬅", "NW": "↖" };
 		
 		// get the html of the template, replace the parameters...
 		var tmplHTML = $('#' + app.beachContainerTmpl).html();
@@ -282,6 +299,7 @@ var app = {
 		newHTML = newHTML.replace('%WATER_TEMP%', beachData.bWeather.t_wa);
 		newHTML = newHTML.replace('%WEATHER_TEMP%', beachData.bWeather.t_we);
 		newHTML = newHTML.replace('%WIND_DIRECTION%', beachData.bWeather.w_di);
+		newHTML = newHTML.replace('%WIND_DIRECTION_ARROW%', directionArray[beachData.bWeather.w_di]);
 		newHTML = newHTML.replace('%WIND_SPEED%', beachData.bWeather.w_sp);
 		
 		// decide the smileys

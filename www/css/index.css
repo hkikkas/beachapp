@@ -28,16 +28,18 @@ html, body {
 
 #map {
 	width: 100%;
-	height: 90%;
+	height: 100%;
 	background: #FFCE55 url('../res/icon/windows-phone/logo_173.png') no-repeat center;
 }
 
 #search_container {
 	width: 100%;
 	height: 10%;
-	background-color: #5d9cec;
-	border: 0 solid #000000;
-	border-bottom-width: 1px;
+	background-color: transparent; /* #5d9cec;*/
+	border: none;
+	/*border-bottom: 1px solid #000;*/
+	position: fixed;
+	z-index: 10;
 }
 
 #result_container {
@@ -45,6 +47,8 @@ html, body {
 	margin-left: 20px;
 	height: 90%;
 	overflow: auto;
+	position: relative;
+	top: 10%;
 }
 
 #search_input {
@@ -58,13 +62,26 @@ html, body {
 	padding-left: 34px;
 	height: 50%;
 	width: 80%;
-	border: 0px;
+	border: 2px solid white;
+}
+
+.search_error  #search_input{
+	border: 2px solid red;
+}
+
+.search_dropshadow  #search_input{
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px -1px;
+}
+
+.bluebox {
+	background-color: #5d9cec !important;
 }
 
 #details_container {
 	width: 100%;
 	height: 100%;
 	background-color: white;
+	position: relative;
 	top: 10%;
 	color: black;
 	display: none;
@@ -293,6 +310,12 @@ ul#details_photos li {
 
 .btn-checkin {
 	background-color: #5D9CEC;
+}
+
+.btn-close {
+	margin: 10px 20px 0px 20px; 
+	border: none; 
+	background-color: white;
 }
 
 .blurred {
