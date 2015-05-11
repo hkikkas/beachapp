@@ -19,7 +19,9 @@
 	eventContainerTmpl: 'details_infotext_tmpl',
 	
 	searchInput: 'search_input',
-	searchContainer : 'search_container',
+	searchContainer: 'search_container',
+	
+	errorContainerName: 'error_container',
 	
 	// Application Constructor
 	initialize: function() {
@@ -157,6 +159,8 @@
 	
 	onError: function(error){
 		alert("the code is " + error.code + ". \n" + "message: " + error.message);
+		$('#' + app.errorContainerName).append("Oups. Something went wrong. Please contact us with the following error message:<br/>" + error.code + ": " + error.message);
+		$('#' + app.errorContainerName).show();
 	},
 	
 	toggleMap: function() {
