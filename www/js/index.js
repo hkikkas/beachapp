@@ -25,6 +25,8 @@
 	errorFriendlyName: 'error_friendly',
 	errorMessageName: 'error_message',
 	
+	state: 'home',
+	
 	// Application Constructor
 	initialize: function() {
 		this.bindEvents();
@@ -173,7 +175,22 @@
 	},
 	
 	onBackKeyDown: function() {
-		alert('Back button pressed');
+		switch(app.state) {
+		case 'details':
+			$('#' + app.searchContainer).removeClass('bluebox');
+			$('#' + app.beachContainerName).hide();
+			$('#' + app.mapContainerName).show();
+			break;
+		case 'searchresults':
+			$('#' + app.searchContainer).removeClass('search_error');
+			$('#' + app.searchContainer).addClass('search_dropshadow');
+			$('#' + app.searchContainer).removeClass('bluebox');
+			$('#' + app.resultContainerName).hide();
+			$('#' + app.resultContainerName).empty();
+			$('#' + app.mapContainerName).show();
+			break;
+		default:
+		}
 	},
 	
 	clearMarkers: function() {
@@ -238,7 +255,9 @@
 			$('#' + app.searchContainer).removeClass('bluebox');
 			//$('#' + app.searchContainer).css('background-color', 'white');
 			}
-
+        
+		app.state = 'searchresults';
+		
 		// construct the api call parameters
 		var apiCallParams = app.apiURL + '?s=' + beachName;
 		$.ajax({
@@ -304,6 +323,8 @@
 		var tmplHTML = $('#' + app.beachContainerTmpl).html();
 		var newHTML = tmplHTML.replace('%BEACH_NAME%', beachData.bInfo.bwname);
 		
+		app.state = 'details';
+		
 		// temperatures & wind speed
 		newHTML = newHTML.replace('%WATER_TEMP%', beachData.bWeather.t_wa);
 		newHTML = newHTML.replace('%WEATHER_TEMP%', beachData.bWeather.t_we);
@@ -349,7 +370,6 @@
 			newHTML = newHTML.replace('%BEACH_DETAILS_EVENT%', eventDetailsHTML);
 			
 		} // else -> not clean
-		
 		
 		// and set the new data to the container
 		$('#' + app.beachContainerName).html(newHTML);
