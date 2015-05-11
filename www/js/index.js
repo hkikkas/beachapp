@@ -45,6 +45,9 @@ var app = {
 		
 		// app.receivedEvent('deviceready');
 		navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
+		
+		document.addEventListener("backbutton", onBackKeyDown, false);
+
 	},
  
 	onSuccess: function( position ) {
@@ -158,6 +161,10 @@ var app = {
 	
 	toggleMap: function() {
 		$('#' + app.mapContainerName).toggle();
+	},
+	
+	onBackKeyDown: function() {
+		alert('Back button pressed');
 	},
 	
 	clearMarkers: function() {
