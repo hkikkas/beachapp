@@ -182,6 +182,7 @@
 			$('#' + app.mapContainerName).show();
 			break;
 		case 'searchresults':
+			$('#' + app.searchInput).val('');
 			$('#' + app.searchContainer).removeClass('search_error');
 			$('#' + app.searchContainer).addClass('search_dropshadow');
 			$('#' + app.searchContainer).removeClass('bluebox');
@@ -325,13 +326,26 @@
 		
 		app.state = 'details';
 		
+		// beach rating
+		var rating = Math.floor((Math.random() * 5) + 1);
+		var ratinglist = "";
+		
+		for (i = 0; i < rating; i++) { 
+			ratinglist += "<li class='star'></li>";
+		}
+		for (i = rating; i < 5; i++) { 
+			ratinglist += "<li class='star dimmed'></li>";
+		}
+		newHTML = newHTML.replace('%RATING_STARS%', ratinglist);
+		
+		newHTML = newHTML.replace('%RATING_COUNT%', Math.floor((Math.random() * 50) + 1));
+		
 		// temperatures & wind speed
 		newHTML = newHTML.replace('%WATER_TEMP%', beachData.bWeather.t_wa);
 		newHTML = newHTML.replace('%WEATHER_TEMP%', beachData.bWeather.t_we);
 		newHTML = newHTML.replace('%WIND_DIRECTION%', beachData.bWeather.w_di);
 		newHTML = newHTML.replace('%WIND_DIRECTION_ARROW%', directionArray[beachData.bWeather.w_di]);
 		newHTML = newHTML.replace('%WIND_SPEED%', beachData.bWeather.w_sp);
-		newHTML = newHTML.replace('%RATING_COUNT%', Math.floor((Math.random() * 50) + 1));
 		
 		// decide the smileys
 		if(beachData.bWater.length == 1) {

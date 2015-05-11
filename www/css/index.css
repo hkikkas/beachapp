@@ -120,6 +120,7 @@ html, body {
 #details_rating_num{
   display: inline;
   line-height: 16pt;
+  margin-left: 5px;
 }
 
 ul#details_rating li {
