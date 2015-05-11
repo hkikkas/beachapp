@@ -22,6 +22,8 @@
 	searchContainer: 'search_container',
 	
 	errorContainerName: 'error_container',
+	errorFriendlyName: 'error_friendly',
+	errorMessageName: 'error_message',
 	
 	// Application Constructor
 	initialize: function() {
@@ -158,8 +160,11 @@
 	},
 	
 	onError: function(error){
-		alert("the code is " + error.code + ". \n" + "message: " + error.message);
-		$('#' + app.errorContainerName).append("Oups. Something went wrong. Please contact us with the following error message:<br/>" + error.code + ": " + error.message);
+		if(error.code == "1")
+			$('#' + app.errorFriendlyName).innerHTML("Please enable location services on your mobile. We would like to know where you are so we can show you great beaches nearby.");
+		else
+			$('#' + app.errorFriendlyName).innerHTML("Oups.<br/>We did not want this to happen.<br/><br/>Please contact us with the following error message:");
+		$('#' + app.errorMessageName).innerHTML("Code " + error.code + " - " + error.message);
 		$('#' + app.errorContainerName).show();
 	},
 	
