@@ -56,6 +56,8 @@
 	// function, we must explicitly call 'app.receivedEvent(...);'
 	onDeviceReady: function() {
 		
+		$('#app_version').append(" " + device.platform + " " + device.model);
+		
 		// app.receivedEvent('deviceready');
 		navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
 		
