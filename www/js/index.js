@@ -59,13 +59,8 @@
 		// app.receivedEvent('deviceready');
 		navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
 		
-		cordova.getAppVersion.getVersionNumber().then(function (version) {
-			$('#app_version').text(version);
-		});
-		
 		document.addEventListener("backbutton", app.onBackKeyDown, false);
 		
-
 	},
  
 	onSuccess: function( position ) {
@@ -201,6 +196,13 @@
 	
 	showMainmenu: function() {
 		$('#' + app.mainmenuName).toggle();
+			
+		cordova.getAppVersion.getVersionNumber().then(function (version) {
+			$('#app_version').text(version);
+		});
+		cordova.getAppVersion(function (version) {
+			alert(version);
+		});
 		
 		app.state = 'menu';
 	},
