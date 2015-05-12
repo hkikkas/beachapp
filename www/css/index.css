@@ -72,6 +72,26 @@ html, body {
 .search_dropshadow  #search_input{
 	box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px -1px;
 }
+#menu_btn {
+	background: url('../img/ui/menu-24-512.png') no-repeat;
+	background-size: 32px 32px;
+	border: none;
+	width: 32px; 
+	height: 32px;
+	position: relative;
+	top: -38px;
+	left: 85%;
+	opacity: 0.4;
+}
+
+#menu_box {
+	display: none;
+	position: relative;
+	width: 80%;
+	background-color: white;
+	margin: auto;
+	padding: 20px;
+}
 
 @media screen and (min-width:0\0) {
     /* IE9 and IE10 rule sets go here */
@@ -330,13 +350,51 @@ ul#details_photos li {
 	background: url('../img/ui/ico-location.png') no-repeat;
 	background-size: 36px 24px;
 	border: none; 
-	height: 24px;
 	width: 36px;
+	height: 24px;
 }
 
 .blurred {
 	filter: blur(5px);
 	-webkit-filter: blur(5px);
+}
+
+#wind-arrow {
+	background: url('../img/ui/ico-winddirection-x2.png') no-repeat;
+	background-size: 21px 17px;
+	border: none;
+	width: 21px; 
+	height: 17px;
+	display: inline-block;
+	/*
+	-webkit-animation-name: windblow;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: windblow;
+    animation-iteration-count: infinite;*/
+}
+
+.wind-strong {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+.wind-medium {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+.wind-weak {
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+}
+
+@-webkit-keyframes windblow {
+    0% { -webkit-transform: rotate(3deg); }
+    50% { -webkit-transform: rotate(-3deg); }
+    100% { -webkit-transform: rotate(3deg); }
+}
+@keyframes windblow {
+    0% { -webkit-transform: rotate(3deg); }
+    50% { -webkit-transform: rotate(-3deg); }
+    100% { -webkit-transform: rotate(3deg); }
 }
 
 #feedback_container {

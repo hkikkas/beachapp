@@ -24,6 +24,8 @@
 		<div id="search_container" class="search_dropshadow">
 			<br />
 			<input type="text" id="search_input" placeholder="Find beach by name">
+			<div id="menu_btn" onclick="app.showMainmenu()"></div>
+			<div id="menu_box">Version: <span id="app_version">###</span></div>
 		</div>
 
 		<div id="result_container"></div>
@@ -87,7 +89,7 @@
 			
 			<div class="details_item_right">
 				<span class="details_header">Direction</span>
-				<span id="details_wdirection" class="details_item_value">%WIND_DIRECTION_ARROW% %WIND_DIRECTION%</span>
+				<span id="details_wdirection" class="details_item_value"><div id="wind-arrow" class="wind-strong" style="transform:rotate(%WIND_DIRECTION_DEGREE%deg)"></div> %WIND_DIRECTION%</span>
 			</div>
 			
 			<div class="details_item_left">

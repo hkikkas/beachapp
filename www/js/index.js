@@ -27,6 +27,11 @@
 	
 	locationName: 'location_btn',
 	
+	windArrowName: 'wind-arrow',
+	
+	menuBtnName: 'menu_btn',
+	mainmenuName: 'menu_box',
+	
 	state: 'home',
 	
 	// Application Constructor
@@ -54,7 +59,12 @@
 		// app.receivedEvent('deviceready');
 		navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
 		
+		cordova.getAppVersion.getVersionNumber().then(function (version) {
+			$('#app_version').text(version);
+		});
+		
 		document.addEventListener("backbutton", app.onBackKeyDown, false);
+		
 
 	},
  
@@ -160,7 +170,7 @@
 				jsonpCallback: 'app.jsonpCallback',
 			});
 			
-		}); // end of listener callbck
+		}); // end of listener callback
 	},
 	
 	onError: function(error){
@@ -185,6 +195,14 @@
 		$('#' + app.searchContainer).removeClass('bluebox');
 		$('#' + app.beachContainerName).hide();
 		$('#' + app.mapContainerName).show();
+		
+		app.state = 'home';
+	},
+	
+	showMainmenu: function() {
+		$('#' + app.mainmenuName).toggle();
+		
+		app.state = 'menu';
 	},
 	
 	onBackKeyDown: function() {
@@ -220,6 +238,8 @@
 		$('#' + app.searchContainer).removeClass('bluebox');
 		$('#' + app.beachContainerName).hide();
 		$('#' + app.mapContainerName).show();
+		
+		app.state = 'home';
 	},
 	
 	jsonpCallback: function( data ) {
@@ -238,6 +258,7 @@
 			});
 			
 			google.maps.event.addListener(marker, 'click', function() {
+				$('#' + app.searchContainer).removeClass('search_dropshadow');
 				$('#' + app.searchContainer).addClass('bluebox');
 				app.showBeachDetails(item);
 			});
@@ -271,8 +292,6 @@
 			$('#' + app.searchContainer).removeClass('bluebox');
 			//$('#' + app.searchContainer).css('background-color', 'white');
 			}
-        
-		app.state = 'searchresults';
 		
 		// construct the api call parameters
 		var apiCallParams = app.apiURL + '?s=' + beachName;
@@ -282,6 +301,8 @@
 			jsonp: 'callback',
 			jsonpCallback: 'app.jsonpSearchCallback',
 		});
+        
+		app.state = 'searchresults';
 	},
 	
 	jsonpSearchCallback: function( data ) {
@@ -333,13 +354,11 @@
 	},
 	
 	showBeachDetails: function( beachData ) {
-		var directionArray = {"N": "⬆", "NE": "↗", "E": "➡", "SE": "↘", "S": "⬇", "SW": "↙", "W": "⬅", "NW": "↖" };
+		var directionArray = {"N": "270", "NE": "315", "E": "0", "SE": "45", "S": "90", "SW": "135", "W": "180", "NW": "225" };
 		
 		// get the html of the template, replace the parameters...
 		var tmplHTML = $('#' + app.beachContainerTmpl).html();
 		var newHTML = tmplHTML.replace('%BEACH_NAME%', beachData.bInfo.bwname);
-		
-		app.state = 'details';
 		
 		// beach rating
 		var rating = Math.floor((Math.random() * 5) + 1);
@@ -358,7 +377,7 @@
 		newHTML = newHTML.replace('%WATER_TEMP%', beachData.bWeather.t_wa);
 		newHTML = newHTML.replace('%WEATHER_TEMP%', beachData.bWeather.t_we);
 		newHTML = newHTML.replace('%WIND_DIRECTION%', beachData.bWeather.w_di);
-		newHTML = newHTML.replace('%WIND_DIRECTION_ARROW%', directionArray[beachData.bWeather.w_di]);
+		newHTML = newHTML.replace('%WIND_DIRECTION_DEGREE%', directionArray[beachData.bWeather.w_di]);
 		newHTML = newHTML.replace('%WIND_SPEED%', beachData.bWeather.w_sp);
 		
 		// decide the smileys
@@ -407,6 +426,8 @@
 		
 		$('#' + app.beachContainerName).animate({width:'toggle'}, 300);
 		$('#' + app.mapContainerName).hide();
+		
+		app.state = 'details';
 	}
 };
  
