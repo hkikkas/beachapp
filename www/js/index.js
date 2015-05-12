@@ -181,6 +181,7 @@
 		
 		app.mapObject.setZoom(11);
 		app.mapObject.setCenter(center);
+		$('#' + app.searchContainer).addClass('search_dropshadow');
 		$('#' + app.searchContainer).removeClass('bluebox');
 		$('#' + app.beachContainerName).hide();
 		$('#' + app.mapContainerName).show();
@@ -189,6 +190,7 @@
 	onBackKeyDown: function() {
 		switch(app.state) {
 		case 'details':
+			$('#' + app.searchContainer).addClass('search_dropshadow');
 			$('#' + app.searchContainer).removeClass('bluebox');
 			$('#' + app.beachContainerName).hide();
 			$('#' + app.mapContainerName).show();
@@ -214,6 +216,7 @@
 	},
 	
 	closeDetails: function() {
+		$('#' + app.searchContainer).addClass('search_dropshadow');
 		$('#' + app.searchContainer).removeClass('bluebox');
 		$('#' + app.beachContainerName).hide();
 		$('#' + app.mapContainerName).show();

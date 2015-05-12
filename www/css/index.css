@@ -328,10 +328,10 @@ ul#details_photos li {
 
 .btn-location {
 	background: url('../img/ui/ico-location.png') no-repeat;
-	background-size: 27px 27px;
+	background-size: 36px 24px;
 	border: none; 
-	height: 27px;
-	width: 27px;
+	height: 24px;
+	width: 36px;
 }
 
 .blurred {
