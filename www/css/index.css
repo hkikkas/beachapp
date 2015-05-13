@@ -128,7 +128,7 @@ html, body {
 }
 
 .details_head {
-	padding: 20px;
+	padding: 0px 20px 20px 20px;
 }
 
 #details_container hr,
@@ -177,7 +177,14 @@ ul#details_rating li {
 	float: left; 
 	font-size: 24pt; 
 	color: #FD5C4A; 
-	margin-right: 10px;
+	width: 15%;
+	text-align: center;
+}
+
+.cleanuptext {
+	width: 85%; 
+	float: right;
+	margin-bottom: 20px;
 }
 
 .smiley, .frowny  {
@@ -351,6 +358,10 @@ ul#details_photos li {
 }
 
 .btn-close {
+	background: url('../img/ui/ico-close-btn.png') no-repeat;
+	background-size: 20px 20px;
+	width: 20px;
+	height: 20px;
 	margin: 10px 20px 0px 20px; 
 	border: none; 
 	background-color: white;
@@ -358,10 +369,12 @@ ul#details_photos li {
 
 .btn-location {
 	background: url('../img/ui/ico-location.png') no-repeat;
-	background-size: 36px 24px;
+	background-size: 27px 18px;
 	border: none; 
-	width: 36px;
-	height: 24px;
+	width: 27px;
+	height: 18px;
+	top: -4px;
+	position: relative;
 }
 
 .blurred {
