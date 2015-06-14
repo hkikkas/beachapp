@@ -174,9 +174,11 @@ ul#details_rating li {
 }
 
 .heart {
+	width: 28px;
+	height: 28px;
+	background: url('../img/ui/ico-heart.png') no-repeat;
+	background-size: 28px;
 	float: left; 
-	font-size: 24pt; 
-	color: #FD5C4A; 
 	width: 15%;
 	text-align: center;
 }
@@ -544,9 +546,14 @@ h1 {
 	border-bottom-width: 1px;
 }
 
-.distance_to_beach {
+.beach_distance {
 	float: right;
 	color: gray;
 	font-size: 12px;
 	vertical-align: bottom;
+    text-transform: lowercase;
+}
+.beach_country {
+	color: gray;
+	font-size: 12px;
 }

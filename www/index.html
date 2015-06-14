@@ -43,8 +43,9 @@
 		<div id="result_tmpl">
 			<div id="beach_%BEACH_ID%">
 				<span class="result first">
-					<span class="name_of_beach">%BEACH_NAME%</span>
-					<span class="distance_to_beach">%BEACH_COUNTRY%</span>
+					<span class="beach_name">%BEACH_NAME%</span>
+					<span class="beach_distance">%BEACH_DISTANCE%</span>
+					<span class="beach_country">%BEACH_COUNTRY%</span>
 				</span>
 			</div>
 		</div>
@@ -59,7 +60,7 @@
 			<div class="details_head">
 			
 				<div id="details_weather" class="sun"></div>
-				<span id="details_title">%BEACH_NAME%</span> <button id="location_btn" onclick="app.showBeachLocation()" class="btn-location" data-lat=%BEACH_LAT% data-lng=%BEACH_LNG%>&nbsp;</button>
+				<span id="details_title">%BEACH_NAME%</span> <button id="location_btn" onclick="app.showBeachLocation()" class="btn-location" data-lat="%BEACH_LAT%" data-lng="%BEACH_LNG%">&nbsp;</button>
 				
 				<div>
 					<ul id="details_rating">
@@ -99,7 +100,7 @@
 			
 			<div class="details_item_right">
 				<span class="details_header">Direction</span>
-				<span id="details_wdirection" class="details_item_value"><div id="wind-arrow" class="wind-strong" style="transform:rotate(%WIND_DIRECTION_DEGREE%deg)"></div> %WIND_DIRECTION%</span>
+				<span id="details_wdirection" class="details_item_value"><div id="wind-arrow" class="wind-strong" style="transform: rotate(%WIND_DIRECTION_DEGREE%deg); transform: -webkit-rotate(%WIND_DIRECTION_DEGREE%deg);"></div> %WIND_DIRECTION%</span>
 			</div>
 			
 			<div class="details_item_left">
@@ -150,7 +151,7 @@
 		<!-- Details infotext tmpl -->
 		<div id="details_infotext_tmpl">
 			<div class="details_infotext">
-				<div class="heart">❤</div>
+				<div class="heart"></div>
 				<div class="cleanuptext">Seems like this beach needs your helping hand. Why not meet with some friends to clean it up?</div>
 				<br/>
 				<div style="text-align: center;">
